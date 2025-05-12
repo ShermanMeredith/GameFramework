@@ -1,0 +1,2 @@
+Assets/gameframeworkmodule/Game Framework/Tools/Dice/D6/BlueDie.prefab
+Assets/gameframeworkmodule/Game Framework/Tools/Dice/D6/GreenDie.prefab
