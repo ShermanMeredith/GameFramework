@@ -7,10 +7,9 @@ using PlayTable;
 public class PTDiceManager : MonoBehaviour
 {
     // fields
+    public static PTDiceManager Instance { get; private set; }
     const float VELOCITY_THRESHOLD = 3.3f;
-
-    [SerializeField]
-    private View.DiceSpot diceSpotView;
+    const float OFFSET = 1f;
     [SerializeField]
     private bool autoInit, spawnsGrid, disableOnRoll;
     [SerializeField]
@@ -22,17 +21,15 @@ public class PTDiceManager : MonoBehaviour
     private List<string> ignoreCollision;
 
     public static bool IsDragging { get; set; }
-    public static bool IsRolling { get; set; }
 
     // properties
     public bool IsInitialized { get { return Dice != null; } }
-    public bool HasStartedRolling { get; set; }
+    public bool HasStartedRolling { get; private set; }
     public int NumberOfDice {  get { return numberOfDice; } }
     public PTDie[] Dice { get; private set; }
     public GameObject[] DiceDraggables { get; private set; }
     public GameObject DiePrefab { set { diePrefab = value; } }
     public GameObject ExtraDiePrefab {  set { extraDiePrefab = value; } }
-
 
     public int DiceSum
     {
@@ -64,11 +61,6 @@ public class PTDiceManager : MonoBehaviour
     {
         get
         {
-            if (!HasStartedRolling)
-            {
-                return false;
-            }
-
             bool finished = true;
             foreach (PTDie die in Dice)
             {
@@ -81,11 +73,21 @@ public class PTDiceManager : MonoBehaviour
         }
     }
 
-
     // functions
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         if (autoInit) { Initialize(); }
+        transform.parent.gameObject.SetActive(false);
+        Application.targetFrameRate = 60;
     }
 
     public void Initialize()
@@ -101,7 +103,6 @@ public class PTDiceManager : MonoBehaviour
         //Debug.Log("Initialize " + numOfDie + " " + position);
         numberOfDice = numOfDie;
         HasStartedRolling = false;
-        IsRolling = false;
         IsDragging = false;
 
         transform.parent.gameObject.SetActive(true);
@@ -111,23 +112,42 @@ public class PTDiceManager : MonoBehaviour
         EnableDice(false);
         SetIgnoreCollisions();
     }
+    
+    /*
+    private void Update()
+    {
+        if(Dice != null && DiceDraggables.Length == Dice.Length && !IsDragging)
+        {
+            for(int i = 0; i< DiceDraggables.Length; ++i)
+            {
+                DiceDraggables[i].transform.position = Vector3.Lerp(Dice[i].rigidBody.transform.position, Camera.main.transform.position, 0.15f);
+            }
+        }
+    }
+    */
 
     public void DestroyDice()
     {
         transform.parent.gameObject.SetActive(false);
-        foreach (PTDie die in Dice)
+        if(Dice != null)
         {
-            Destroy(die.gameObject);
+            foreach (PTDie die in Dice)
+            {
+                Destroy(die.gameObject);
+            }
+            Dice = null;
         }
 
-        foreach (GameObject dieDraggable in DiceDraggables)
+        if(DiceDraggables != null)
         {
-            Destroy(dieDraggable);
+            foreach (GameObject dieDraggable in DiceDraggables)
+            {
+                Destroy(dieDraggable);
+            }
+            DiceDraggables = null;
         }
-
-        DiceDraggables = null;
-        Dice = null;
     }
+
     public IEnumerator SetVisible(bool visible, float timer)
     {
         foreach (PTDie die in Dice)
@@ -140,6 +160,7 @@ public class PTDiceManager : MonoBehaviour
 
     public void AutoRollDice(float power)
     {
+        HasStartedRolling = true;
         foreach (PTDie die in Dice)
         {
             die.Roll(power);
@@ -167,9 +188,10 @@ public class PTDiceManager : MonoBehaviour
             return;
         }
 
-        foreach (GameObject draggable in DiceDraggables)
+        for(int i = 0; i < DiceDraggables.Length; ++i)
         {
-            draggable.GetComponent<Collider>().enabled = isEnabled;
+            DiceDraggables[i].GetComponent<Collider>().enabled = isEnabled;
+            // TODO: reset dice position
         }
     }
 
@@ -183,7 +205,7 @@ public class PTDiceManager : MonoBehaviour
 
     private void SpawnDice(List<Transform> transforms)
     {
-        //Debug.Log("SpawnDice");
+        Debug.LogError("SpawnDice");
         Dice = new PTDie[numberOfDice];
 
         for (int i = 0; i < numberOfDice; ++i)
@@ -200,11 +222,12 @@ public class PTDiceManager : MonoBehaviour
             Dice[i].transform.position = new Vector3(transforms[i].position.x, transforms[i].position.y + 3f, transforms[i].position.z);
             Dice[i].GoBackPosition = Dice[i].transform.position;
         }
+        Dice[0].Init();
     }
 
     private void SpawnDice()
     {
-        //Debug.Log("SpawnDice");
+        //Debug.LogError("SpawnDice");
         Dice = new PTDie[numberOfDice];
 
         if (spawnsGrid)
@@ -218,6 +241,7 @@ public class PTDiceManager : MonoBehaviour
                     Dice[y * sqrt + x] = Instantiate(diePrefab, this.transform).GetComponent<PTDie>();
                     Dice[y * sqrt + x].transform.localPosition = new Vector3(x, 0, y);
                     spawned++;
+                    Dice[0].Init();
                     if (spawned >= numberOfDice) { return; }
                 }
             }
@@ -241,10 +265,15 @@ public class PTDiceManager : MonoBehaviour
             DiceDraggables[i] = Instantiate(draggablePrefab, transform);
             GameObject diceDraggable = DiceDraggables[i];
 
-            diceDraggable.GetComponent<PTGamePiece>().OnTouchBegin += (PTTouch touch) => { DiceTouchedHandler(); };
-            diceDraggable.GetComponent<PTGamePiece>().OnDragBegin += (PTTouch touch) => { DiceDraggedHandler(diceDraggable.transform);};
-            diceDraggable.GetComponent<PTGamePiece>().OnDropped += (PTTouchFollower follower) => { StartCoroutine(DiceDroppedHandler(follower)); };
-            diceDraggable.GetComponent<PTGamePiece>().SetPositionOffset(dragHeight);
+            diceDraggable.GetComponent<PTGamePiece_new>().OnDragBegin += (PTTouch touch) => 
+            {
+                if (!IsDragging)
+                {
+                    DiceDraggedHandler(diceDraggable.transform);
+                }
+            };
+            diceDraggable.GetComponent<PTGamePiece_new>().OnDropped += (PTTouchFollower follower) => { StartCoroutine(DiceDroppedHandler(follower)); };
+            diceDraggable.GetComponent<PTGamePiece_new>().SetPositionOffset(dragHeight);
 
             SpringJoint springJoint = DiceDraggables[i].GetComponent<SpringJoint>();
             for (int j = 0; j < numberOfDice - 1; ++j)
@@ -255,13 +284,10 @@ public class PTDiceManager : MonoBehaviour
             {
                 joint.autoConfigureConnectedAnchor = false;
                 joint.connectedAnchor = Vector3.zero;
+                joint.spring = springJoint.spring;
+                joint.damper = springJoint.damper;
+                joint.maxDistance = springJoint.maxDistance;
             }
-        }
-
-        for (int i = 0; i < DiceDraggables.Length; ++i)
-        {
-            DiceDraggables[i].transform.position = Dice[i].rigidBody.transform.position;
-
         }
     }
 
@@ -297,20 +323,20 @@ public class PTDiceManager : MonoBehaviour
     {
         //Debug.Log("SendDiceToLocation " + globalLocation);
         HasStartedRolling = false;
-        //bool wasKinematic = Dice[0].rigidBody.isKinematic;
+        bool wasKinematic = Dice[0].rigidBody.isKinematic;
 
         for (int i = 0; i < Dice.Length; ++i)
         {
             Dice[i].rigidBody.isKinematic = true;
-            Dice[i].rigidBody.useGravity = false;
-            Dice[i].rigidBody.transform.SetWorldPosition(globalLocation + new Vector3(i*.7f, 3f, 0f), timer);
-            Dice[i].GoBackPosition = globalLocation + new Vector3(i * .7f, 3f, 0f);
+            //Dice[i].rigidBody.useGravity = false;
+            Dice[i].rigidBody.transform.SetWorldPosition(globalLocation + new Vector3(i*OFFSET, 0, 0f), timer);
+            Dice[i].GoBackPosition = globalLocation + new Vector3(i * OFFSET, 0, 0f);
             StartCoroutine(Dice[i].Fade(visible, timer));
         }
         yield return new WaitForSeconds(timer);
         foreach (PTDie die in Dice)
         {
-            //die.rigidBody.isKinematic = wasKinematic;
+            die.rigidBody.isKinematic = wasKinematic;
             die.rigidBody.transform.parent = die.transform.parent;
             die.transform.position = die.rigidBody.transform.position;
             die.rigidBody.transform.parent = die.transform;
@@ -386,6 +412,21 @@ public class PTDiceManager : MonoBehaviour
         }
     }
 
+    public IEnumerator SetDieFace(int dieIndex, int face, float timer = PT.DEFAULT_TIMER)
+    {
+        if (Dice.Length >= dieIndex)
+        {
+            if (face > 0 && face <= Dice[dieIndex].FaceCount)
+            {
+                yield return Dice[dieIndex].SetCoroutine(face, timer);
+            }
+        }
+        else
+        {
+            Debug.LogError("Trying to set face of die that does not exist: index = " + dieIndex);
+        }
+    }
+
     private void SetIgnoreCollisions()
     {
         //Debug.Log("SetIgnoreCollisions");
@@ -393,6 +434,7 @@ public class PTDiceManager : MonoBehaviour
         {
             foreach (GameObject piece in GameObject.FindGameObjectsWithTag(tag))
             {
+                Debug.LogError(piece);
                 if(piece.GetComponent<Collider>() != null)
                 {
                     foreach (PTDie die in Dice)
@@ -404,16 +446,6 @@ public class PTDiceManager : MonoBehaviour
         }
     }
 
-    private void DiceTouchedHandler()
-    {
-        //Debug.Log("DiceTouchedHandler");
-        //foreach (PTDie die in Dice)
-        //{
-        //    die.rigidBody.isKinematic = false;
-        //    die.rigidBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        //}
-    }
-
     private void DiceDraggedHandler(Transform dragging)
     {
         //Debug.Log("DiceDraggedHandler");
@@ -423,6 +455,7 @@ public class PTDiceManager : MonoBehaviour
         {
             die.rigidBody.isKinematic = false;
             die.rigidBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            die.rigidBody.drag = 1;
         }
 
         // disable other draggables
@@ -434,17 +467,18 @@ public class PTDiceManager : MonoBehaviour
             }
         }
 
+        Vector3 sumVector = Vector3.zero;
+        foreach(PTDie die in Dice)
+        {
+            sumVector += die.transform.position;
+        }
+        dragging.transform.position = sumVector / Dice.Length;
+
         // set up spring joints on current draggable
         SpringJoint[] joints = dragging.GetComponents<SpringJoint>();
         for (int i = 0; i < joints.Length; ++i)
         {
             joints[i].connectedBody = Dice[i].rigidBody;
-        }
-
-        foreach (PTDie die in Dice)
-        {
-            die.rigidBody.drag = 1;
-            //Debug.Log("die.rigidBody.transform.postiion " + die.rigidBody.transform.position);
         }
     }
 
@@ -463,7 +497,6 @@ public class PTDiceManager : MonoBehaviour
 
         foreach (GameObject draggable in DiceDraggables)
         {
-
             draggable.GetComponent<Collider>().enabled = !disableOnRoll;
             foreach (SpringJoint joint in draggable.GetComponents<SpringJoint>())
             {
@@ -473,7 +506,6 @@ public class PTDiceManager : MonoBehaviour
 
         if (startedRolling)
         {
-            IsRolling = true;
             //Debug.Log("DiceDroppedHandler startedRolling");
             foreach (PTDie die in Dice)
             {
@@ -491,16 +523,6 @@ public class PTDiceManager : MonoBehaviour
                 draggable.GetComponent<Collider>().enabled = true;
             }
 
-            foreach (PTDie die in Dice)
-            {
-                if (die.GetComponent<View.Nudge>())
-                {
-                    die.StartCoroutine(die.GetComponent<View.Nudge>().StartNudgeCoroutine());
-                }
-            }
-
-
-            diceSpotView.HasDiceBeenTouched = false;
             EnableDice(true);
         }
 
