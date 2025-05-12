@@ -1,0 +1,3 @@
+[submodule "gameframeworkmodule"]
+	path = gameframeworkmodule
+	url = https://gitlab.com/blokparty/games/gameframeworkmodule
