@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 34b71ce522c27fd409fb2ad2907a1a2d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Aristotelica Small Caps
+  fontNames:
+  - Aristotelica Small Caps
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 04cda5318523e084aae63a281cb732cb, type: 3}
+  - {fileID: 12800000, guid: 1710f6135ba1e124e80ee8c988bd265c, type: 3}
+  - {fileID: 12800000, guid: 1f8bdef9c03ff7443b903980a5636d85, type: 3}
+  - {fileID: 12800000, guid: 051ef92d1a687cd49aa91c6ed1dcad07, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
