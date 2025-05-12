@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4148efb63d32ff84094eae754ebe76a1, type: 3}
+  m_Name: CatanAccount_Thorolf
+  m_EditorClassIdentifier: 
+  avatarName: Thorolf
+  avatarFull: {fileID: 21300000, guid: 1cdf2e7c6ea2b4241ac22f48b829c392, type: 3}
+  avatarPortrait: {fileID: 0}
+  portraitBackground: {fileID: 0}
+  shadow: {fileID: 0}
+  portraitOffset: {x: 0.52, y: -6.66}
+  shadowOffset: {x: 0, y: -9.8}
+  shadowSize: {x: 3, y: 3}
+  playerType: 0
+  aiCharacter: {fileID: 11400000, guid: e1912e575c01cb84b89bbddf36384920, type: 2}

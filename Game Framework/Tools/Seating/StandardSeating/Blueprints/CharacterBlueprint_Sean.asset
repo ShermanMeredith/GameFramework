@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cd83b6d0f0d354bb468e8cfdcf6d5a, type: 3}
+  m_Name: CharacterBlueprint_Sean
+  m_EditorClassIdentifier: 
+  avatarFull: {fileID: 21300000, guid: 13994d0ea875b41ee9c919916faabd65, type: 3}
+  portrait: {fileID: 0}
+  characterName: Sean
+  characterStory: "Sean is more of an arrogant knight. He haughtily alleges to be
+    far superior to everybody else, by virtue of his ancestors\u2019 achievements
+    and the fact that he even knows the names of these people.  If he trades with
+    someone, it means that he is granting that person a favor. If he places the robber
+    next to someone, he is only collecting the tributes he is rightfully entitled
+    to. This is something he often comments on with the phrase: \u201CYou are nothing
+    but my vassal on this island; therefore, part of your harvest is mine anyway.\u201D
+    \ If his resource income allows it, Sean will always try to get the Largest Army.
+    But, and this counts in his favor, he also can lose with honor and acknowledge
+    the success of his game partners.  For his German friends, Sean goes under the
+    name of Siegfried."

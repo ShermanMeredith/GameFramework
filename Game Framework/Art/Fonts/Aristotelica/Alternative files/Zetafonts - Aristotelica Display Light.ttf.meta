@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 16b3cd070a06d954e898416a1096da42
+guid: f773243f05db188439c0fd426f8b791d
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,25 @@ TrueTypeFontImporter:
   fontName: Aristotelica Display
   fontNames:
   - Aristotelica Display
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 279b13a0fba91154586abc7312d261ef, type: 3}
+  - {fileID: 12800000, guid: dbc1ec82771be65498c950e9087bc458, type: 3}
+  - {fileID: 12800000, guid: 9cd4f1e36504d084a8f5d9b81ca9ef60, type: 3}
+  - {fileID: 12800000, guid: 016053e4b0f3c414e942b1222086cd3e, type: 3}
+  - {fileID: 12800000, guid: f3c15465826221d4fa6df7a0677277d4, type: 3}
+  - {fileID: 12800000, guid: dff711b5618e0814ca4508e6885b0f70, type: 3}
+  - {fileID: 12800000, guid: 70c314c676d0ab64580fdd78a62ca20a, type: 3}
+  - {fileID: 12800000, guid: 6a1be00759bdb864797a846f06135bfa, type: 3}
+  - {fileID: 12800000, guid: 16b3cd070a06d954e898416a1096da42, type: 3}
+  - {fileID: 12800000, guid: f6c04bd78eb50dc4abd09a4c00c86ede, type: 3}
+  - {fileID: 12800000, guid: ee9f3fd83ae00ff4c8c2166b46092c53, type: 3}
+  - {fileID: 12800000, guid: 89389e29c4b53074582c793c60db8978, type: 3}
+  - {fileID: 12800000, guid: 3aca693a9af98ae48a51433108e8edd9, type: 3}
+  - {fileID: 12800000, guid: 3108beca9f2d30f429315e8daa4fb844, type: 3}
+  - {fileID: 12800000, guid: d6c1321b0093cf1499b7ae9db405c55d, type: 3}
+  - {fileID: 12800000, guid: 45fe307b86a05bb428a23675c8dfbcb3, type: 3}
+  - {fileID: 12800000, guid: 40271d9c38ddea94683079923bed4924, type: 3}
+  - {fileID: 12800000, guid: a70c036e26c26cd409d0895afb2df9ec, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

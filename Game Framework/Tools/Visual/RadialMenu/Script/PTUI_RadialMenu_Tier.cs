@@ -137,7 +137,7 @@ public class PTUI_RadialMenu_Tier : MonoBehaviour {
                             Text childText = currButton.GetComponentInChildren<Text>();
 
                             Collider colliderCurrButton = currButton.GetComponent<Collider>();
-                            PTGlobalInput.OnTouchEnter += (PTTouch touch, Collider collider) =>
+                            PTGlobalInput_new.OnTouchEnter += (PTTouch touch, Collider collider) =>
                             {
                                 if (collider == colliderCurrButton)
                                 {
@@ -147,7 +147,7 @@ public class PTUI_RadialMenu_Tier : MonoBehaviour {
                                     }
                                 }
                             };
-                            PTGlobalInput.OnShortHoldBegin += (PTTouch touch) =>
+                            PTGlobalInput_new.OnShortHoldBegin += (PTTouch touch) =>
                             {
                                 if (colliderCurrButton && touch.hits.ContainsKey(colliderCurrButton))
                                 {

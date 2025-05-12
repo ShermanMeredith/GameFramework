@@ -19,14 +19,33 @@ public class PTDragRestriction : MonoBehaviour
     public Vector3 MinimumWorldPosition { get { return worldspaceOrigin + minimumOffset; } }
     public Vector3 MaximumWorldPosition { get { return worldspaceOrigin + maximumOffset; } }
 
-    private void Awake()
+    private void Start()
     {
         localOrigin = transform.localPosition;
         worldspaceOrigin = transform.position;
+        SetOffsets(minimumOffset, maximumOffset);
     }
 
     public void SetOffsets(Vector3 minimum, Vector3 maximum)
     {
+        if (minimum.x > maximum.x)
+        {
+            float temp = minimum.x;
+            minimum.x = maximum.x;
+            maximum.x = temp;
+        }
+        if (minimum.y > maximum.y)
+        {
+            float temp = minimum.y;
+            minimum.y = maximum.y;
+            maximum.y = temp;
+        }
+        if (minimum.z > maximum.z)
+        {
+            float temp = minimum.z;
+            minimum.z = maximum.z;
+            maximum.z = temp;
+        }
         minimumOffset = minimum;
         maximumOffset = maximum;
     }

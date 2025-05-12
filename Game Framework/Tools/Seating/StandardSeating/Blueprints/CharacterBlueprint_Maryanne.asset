@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cd83b6d0f0d354bb468e8cfdcf6d5a, type: 3}
+  m_Name: CharacterBlueprint_Maryanne
+  m_EditorClassIdentifier: 
+  avatarFull: {fileID: 21300000, guid: 10d2b3e8af43eb745a73f187cfc246ca, type: 3}
+  portrait: {fileID: 0}
+  characterName: Mary Anne
+  characterStory: "Mary Anne has a big farm and a big heart. \\n\\nPeople who send
+    the robber to her farm only temporarily fall from grace with her. It won\u2019t
+    take long until she offers a cup of her delicious apple cider again. \\n\\nIt\u2019s
+    easy to imagine her controlling an extended family of twenty people comprising
+    four generations, always staying calm and kind. \\n\\nShe loves to build the Longest
+    Road, because she wants to make sure that her farm always gets enough resources
+    and commodities from Catan. Mary Anne is not that often among the winners of the
+    Catan Board Game, but she \\nis always up for a game."

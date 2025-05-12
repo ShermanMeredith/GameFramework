@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cd83b6d0f0d354bb468e8cfdcf6d5a, type: 3}
+  m_Name: CharacterBlueprint_Thorolf
+  m_EditorClassIdentifier: 
+  avatarFull: {fileID: 21300000, guid: 1cdf2e7c6ea2b4241ac22f48b829c392, type: 3}
+  portrait: {fileID: 0}
+  characterName: Thorolf
+  characterStory: "Thorolf is a master woodcutter and carpenter and a \\ndown-to-earth
+    character. \\n\\nSecuring his resource income comes first for him.  \\n\\nHis
+    favorite saying, \u201CThe best diplomats are a sharp axe and a keen sword,\u201D
+    testifies to his rather harsh tone. \\n\\nHowever, this should not belie the fact
+    that his heart is in the right place."

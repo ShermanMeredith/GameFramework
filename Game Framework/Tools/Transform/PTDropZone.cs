@@ -6,13 +6,13 @@ using PlayTable;
 /// <summary>
 /// PTDropZone is a zone where added objects are either sent into a child zone or stay where they were dropped
 /// </summary>
-public class PTDropZone : PTZone
+public class PTDropZone : PTZone_new
 {
-    private List<PTZone> subZones
+    private List<PTZone_new> subZones
     {
         get
         {
-            List<PTZone> childZones = new List<PTZone>(GetComponentsInChildren<PTZone>());
+            List<PTZone_new> childZones = new List<PTZone_new>(GetComponentsInChildren<PTZone_new>());
             childZones.Remove(this);
             return childZones;
         }
@@ -37,7 +37,7 @@ public class PTDropZone : PTZone
                 yield break;
             }
 
-            foreach (PTZone zone in subZones)
+            foreach (PTZone_new zone in subZones)
             {
                 print("trying to drop into " + zone + ". Accepts = " + zone.Accepts(component.transform));
                 if (zone.Accepts(component.transform))

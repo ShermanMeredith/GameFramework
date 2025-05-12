@@ -4,14 +4,14 @@ using System.Collections;
 
 public class PTSeat : MonoBehaviour {
     public GameObject spriteDragHere;
-    public PTZone zone;
+    public PTZone_new zone;
 
     public bool isFull { get { return !spriteDragHere.gameObject.activeSelf; } }
     public PTSeatSelector playerSitting { get { return GetComponentInChildren<PTSeatSelector>(); } }
 
     private void Awake()
     {
-        zone = GetComponent<PTZone>();
+        zone = GetComponent<PTZone_new>();
     }
 
     public void LetSit(Transform player)
@@ -37,8 +37,8 @@ public class PTSeat : MonoBehaviour {
 
     public IEnumerator RemoveSeatedPlayerCoroutine()
     {
-        yield return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone>().AddCoroutine(playerSitting, 0, PT.DEFAULT_TIMER);
-        yield return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone>().ArrangeCoroutine(PT.DEFAULT_TIMER);
+        yield return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone_new>().AddCoroutine(playerSitting, 0, PT.DEFAULT_TIMER);
+        yield return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone_new>().ArrangeCoroutine(PT.DEFAULT_TIMER);
         UpdateLabel();
     }
 }

@@ -18,24 +18,14 @@ public class PTPlayerPool : MonoBehaviour
 
     private void Update()
     {
-        if (FindObjectsOfType<PTPlayer>().Length == 0 && !nudgeStarted)
-        {
-            nudgeStarted = true;
-            buttonAddPlayer.GetComponent<View.Nudge>().StartCoroutine(buttonAddPlayer.GetComponent<View.Nudge>().StartNudgeCoroutine());
-        } else if (FindObjectsOfType<PTPlayer>().Length > 0 && nudgeStarted)
-        {
-            buttonAddPlayer.GetComponent<View.Nudge>().StopNudge();
-            nudgeStarted = false;
-        }
-
         if (FindObjectsOfType<PTPlayer>().Length < MAX_PLAYER && !buttonAddPlayer.gameObject.activeSelf)
         {
             buttonAddPlayer.gameObject.SetActive(true);
-            GetComponent<PTLayoutZone>().Arrange();
+            GetComponent<PTLayoutZone_new>().Arrange();
 
         } else if (GetComponentsInChildren<PTPlayer>().Length != previousNumberOfPlayersInPool)
         {
-            GetComponent<PTLayoutZone>().Arrange();
+            GetComponent<PTLayoutZone_new>().Arrange();
             previousNumberOfPlayersInPool = GetComponentsInChildren<PTPlayer>().Length;
         }
 

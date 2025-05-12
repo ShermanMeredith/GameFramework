@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cd83b6d0f0d354bb468e8cfdcf6d5a, type: 3}
+  m_Name: CharacterBlueprint_Nassir
+  m_EditorClassIdentifier: 
+  avatarFull: {fileID: 21300000, guid: 0e5806023e3e95545bf7637b45b32b87, type: 3}
+  portrait: {fileID: 0}
+  characterName: Nassir
+  characterStory: "Nassir is a shrewd Catanian master merchant who \\nalways knows
+    exactly what he\u2019s after. His merchant caravans reach even the most remote
+    places \u2013 provided, of course, that rich profits can be made there. \\n\\nHis
+    commercial skills are second to none. To minimize the entrepreneurial risk, he
+    maintains a substantial mercenary force, which he uses not only to protect his
+    goods transports from attacks but also to convince reluctant trading partners
+    of the fairness of his trade offers. \\n\\nIn this context, one of his favorite
+    lines is, \u201CTrust me -  I know what\u2019s best for you.\u201D"

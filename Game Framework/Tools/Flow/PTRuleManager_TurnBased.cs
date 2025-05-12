@@ -71,10 +71,13 @@ namespace PlayTable
 
             //Rounds
             bool hasStarted = false;
-            while (!hasStarted || !GameCanEnd())
+            if (!GameCanEnd())
             {
-                hasStarted = true;
-                yield return Round();
+                while (!hasStarted || !GameCanEnd())
+                {
+                    hasStarted = true;
+                    yield return Round();
+                }
             }
 
             //Game end
@@ -93,7 +96,7 @@ namespace PlayTable
 
             //Turns
             bool hasStarted = false;
-            playerIndex = alwaysStartFromFirstPlayer ? 0 : playerIndex;
+            playerIndex = 0;
             while (!hasStarted || !RoundCanEnd())
             {
                 hasStarted = true;

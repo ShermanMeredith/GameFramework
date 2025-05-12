@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c81c4cb1ee605a741b9dcee87bbff86c
+guid: a62992e4eeeb68e459bca22edd2b5bb7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,8 @@ TrueTypeFontImporter:
   fontName: Myriad
   fontNames:
   - Myriad
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c81c4cb1ee605a741b9dcee87bbff86c, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

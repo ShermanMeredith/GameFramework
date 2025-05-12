@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cd83b6d0f0d354bb468e8cfdcf6d5a, type: 3}
+  m_Name: CharacterBlueprint_Lin
+  m_EditorClassIdentifier: 
+  avatarFull: {fileID: 21300000, guid: a8497cf1b6dd8924684450ccf9db34ac, type: 3}
+  portrait: {fileID: 0}
+  characterName: Lin
+  characterStory: "Lin is a seasoned expert in the transfer of ownership.\\nFor this,
+    she mostly relies on the surprise effect when she and her band of outlaws suddenly
+    appear out of nowhere and relieve well-heeled travelers of all their valuables.\\n\\nAlthough
+    they simply call her a robber\u2019s bride, Lin insists that she is nobody\u2019s
+    bride, and much less that of a robber!\\n\\nShe denies any similarity to robbers,
+    seeing herself as an enforcer of poetic justice; someone who redistributes wealth,
+    often giving generous gifts to the needy.\\n\\nShe deeply loathes robbers who
+    want all the stolen goods only for themselves, and she sends them to the desert
+    whenever she can."

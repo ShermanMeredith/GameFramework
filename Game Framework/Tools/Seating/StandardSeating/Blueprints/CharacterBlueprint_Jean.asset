@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cd83b6d0f0d354bb468e8cfdcf6d5a, type: 3}
+  m_Name: CharacterBlueprint_Jean
+  m_EditorClassIdentifier: 
+  avatarFull: {fileID: 21300000, guid: 45ca434991d7bb7499b95a6dbb8574e7, type: 3}
+  portrait: {fileID: 0}
+  characterName: Jean
+  characterStory: "Jean is a pretty pirate woman with an honor code characteristic
+    to her guild. \\n\\n\u201CRobbed is not stolen\u201D is her motto when she uses
+    the robber to take other people\u2019s resources. But for the same reason, she
+    isn\u2019t too resentful if she gets robbed herself. \\n\\nShe detests Trade Masters,
+    Spies, and Monopolies, because she considers them simply as dishonorable and insidious
+    robberies. \\n\\nNegotiations and compromises are not Jean\u2019s cup of tea.
+    She says things straightforwardly, and if she finds someone likeable, it may happen
+    that she kills \\na bottle of rum with him."

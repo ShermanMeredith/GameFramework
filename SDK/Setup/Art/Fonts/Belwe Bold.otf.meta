@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7dc609305142b2143aa9fe98d1919656
+guid: 34660695842165042892de282d466062
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,9 @@ TrueTypeFontImporter:
   fontName: Belwe
   fontNames:
   - Belwe
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7dc609305142b2143aa9fe98d1919656, type: 3}
+  - {fileID: 12800000, guid: fb234dd96ff57d542a045971de663025, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

@@ -5,12 +5,12 @@ using UnityEngine;
 namespace PlayTable
 {
     [RequireComponent(typeof(PTTransform))]
-    [RequireComponent(typeof(PTLocalInput))]
+    [RequireComponent(typeof(PTLocalInput_new))]
     public class PTFlatGroupElement : MonoBehaviour
     {
 
         private PTFlatGroups groups { get { return GetComponentInParent<PTFlatGroups>(); } }
-        private PTLocalInput gesture = null;
+        private PTLocalInput_new gesture = null;
 
         public KeyValuePair<int, PTFlatGroupCollection> Collection
         {
@@ -56,7 +56,7 @@ namespace PlayTable
             {
                 if (groups)
                 {
-                    return groups.GetComponent<PTLayoutZone>().TargetWorldPositionOf(SiblingIndexExpected);
+                    return groups.GetComponent<PTLayoutZone_new>().TargetWorldPositionOf(SiblingIndexExpected);
                 }
                 else
                 {
@@ -75,13 +75,13 @@ namespace PlayTable
 
         private void Awake()
         {
-            gesture = GetComponent<PTLocalInput>();
+            gesture = GetComponent<PTLocalInput_new>();
 
             gesture.OnDragBegin += (PTTouch touch) =>
             {
                 if (gameObject 
                     && groups
-                    && !groups.GetComponent<PTLayoutZone>().IsArranging 
+                    && !groups.GetComponent<PTLayoutZone_new>().IsArranging 
                     && !groups.isDragging 
                     && touch.hitsBegin.ContainsKey(gesture.GetComponent<Collider>()))
                 {
@@ -98,7 +98,7 @@ namespace PlayTable
             };
             gesture.OnDrag += (PTTouch touch) =>
             {
-                if (gameObject && PTGlobalInput.IsDragging(gesture.GetComponent<Collider>()) && touch.hitsBegin.ContainsKey(gesture.GetComponent<Collider>()))
+                if (gameObject && PTGlobalInput_new.IsDragging(gesture.GetComponent<Collider>()) && touch.hitsBegin.ContainsKey(gesture.GetComponent<Collider>()))
                 {
                     if ((transform.position - groups.transform.position).z > groups.height)
                     {
@@ -130,8 +130,8 @@ namespace PlayTable
             {
                 if (gameObject 
                     && groups
-                    && (groups.isDragging || groups.GetComponent<PTLayoutZone>().IsArranging)
-                    && gesture.dragEnabled)
+                    && (groups.isDragging || groups.GetComponent<PTLayoutZone_new>().IsArranging)
+                    && gesture.GetComponent<PTGamePiece_new>() && gesture.GetComponent<PTGamePiece_new>().IsDraggable)
                 {
                     if (groups.OnDragEnd != null)
                     {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ce0c81ab41d508543a08cf5fadf98042
+guid: 0fddf5a9abaa99b418835d573a2ffebd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,12 @@ TrueTypeFontImporter:
   fontName: SFNS Display
   fontNames:
   - SFNS Display
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 724e2df19d9aeee4f9fed7864f0a7eed, type: 3}
+  - {fileID: 12800000, guid: b8faf697110e2a042a0d48ea288cff6f, type: 3}
+  - {fileID: 12800000, guid: 5e3882488564f3e439b5777cba19d31f, type: 3}
+  - {fileID: 12800000, guid: ce0c81ab41d508543a08cf5fadf98042, type: 3}
+  - {fileID: 12800000, guid: 061993cc12fded64a82d012a66590192, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

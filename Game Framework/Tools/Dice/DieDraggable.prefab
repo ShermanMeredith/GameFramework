@@ -45,7 +45,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3, z: 1}
+  m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &54561314967852036
 Rigidbody:
@@ -95,15 +95,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1803858972973814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 150e4d9f4b0058a4a8d8b784ea28a7c1, type: 3}
+  m_Script: {fileID: 11500000, guid: ec5a6ae1b80d2e746a22acf13697bb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragEnabled: 1
+  isLargeTouchInteractive: 0
   enableDropAnimation: 0
   dragWorldPositionOffset: {x: 0, y: 0, z: 0}
   dragWorldScaleOffset: {x: 0, y: 0, z: 0}
   prefabDragToSpawn: {fileID: 0}
+  isDraggable: 1
+  isCenteredOnDrag: 1
   defaultDragReject: 0
   draggedScaleOffset: 0
   hoverScaleOffset: 0
   draggedPositionOffset: 0
+  touchFeedbackScale: 1

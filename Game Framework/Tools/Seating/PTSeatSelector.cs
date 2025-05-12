@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class PTSeatSelector : MonoBehaviour {
 
-    public PTGamePiece buttonRemove;
+    public PTGamePiece_new buttonRemove;
 
-    private PTGamePiece localInput;
+    private PTGamePiece_new localInput;
     private bool isBeingDragged;
+    private int lastSiblingIndex;
     private PTSeat lastSeat;
     public PTSeat seat { get { return GetComponentInParent<PTSeat>(); } }
-    public PTLayoutZone playerPoolZone {  get { return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone>(); } }
+    public PTLayoutZone_new playerPoolZone {  get { return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone_new>(); } }
 
     private void Awake()
     {
-        localInput = GetComponent<PTGamePiece>();
+        localInput = GetComponent<PTGamePiece_new>();
 
         localInput.OnDragBegin += HandlerOnDragBegin;
         localInput.OnDropped += HandlerOnDropped;
@@ -29,7 +30,7 @@ public class PTSeatSelector : MonoBehaviour {
         {
             seat.UpdateLabel(true);
         }
-
+        playerPoolZone.GetComponentInChildren<PTButtonAddPlayer>().ReenableText();
         Destroy(gameObject);
     }
     private void HandlerOnShortHoldBein(PTTouch touch)
@@ -46,6 +47,7 @@ public class PTSeatSelector : MonoBehaviour {
         isBeingDragged = true;
 
         lastSeat = seat;
+        lastSiblingIndex = transform.GetSiblingIndex();
 
         transform.SetParent(null);
 
@@ -105,8 +107,10 @@ public class PTSeatSelector : MonoBehaviour {
 
     private IEnumerator ReturnToPlayerPoolCoroutine()
     {
-        yield return playerPoolZone.AddCoroutine(this, 0, PT.DEFAULT_TIMER);
+        GetComponent<Collider>().enabled = false;
+        yield return playerPoolZone.AddCoroutine(this, lastSiblingIndex, PT.DEFAULT_TIMER);
         yield return playerPoolZone.ArrangeCoroutine(PT.DEFAULT_TIMER);
+        GetComponent<Collider>().enabled = true;
         isBeingDragged = false;
     }
 }

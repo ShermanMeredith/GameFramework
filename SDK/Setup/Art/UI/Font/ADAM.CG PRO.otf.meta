@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7bf6d76215170d74b9b963f993987628
+guid: f91d3f4d6b7d65745ad12778057b1c74
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,8 @@ TrueTypeFontImporter:
   fontName: ADAM.CG PRO
   fontNames:
   - ADAM.CG PRO
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7bf6d76215170d74b9b963f993987628, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

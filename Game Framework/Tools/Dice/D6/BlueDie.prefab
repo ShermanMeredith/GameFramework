@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4879054284163296}
-  - component: {fileID: 114055577846529540}
   - component: {fileID: 788019005422646562}
   m_Layer: 0
   m_Name: BlueDie
@@ -34,20 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114055577846529540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295403204250218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27df8ac295712584f87c8743a209cbef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 54639048901799196}
-  meshRenderer: {fileID: 23229557621683558}
 --- !u!114 &788019005422646562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,13 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295403204250218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ea427bb3bfd45a584d26ef31cf7aa8, type: 3}
+  m_Script: {fileID: 11500000, guid: fe4b856f438f0c14895e76e456441769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circlePulse: {fileID: 1255050354037502827}
-  maxScale: 0.35
-  nudgeStepTimer: 1.5
-  nudgeWaitTimer: 0.5
+  rigidBody: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!1 &6463257008025596416
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +113,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 589124079
-  m_SortingLayer: 30
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 71b301195bce60c4182d8bfd3c44c75f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -140,7 +123,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1939272479170925278
@@ -150,11 +133,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4879054284163296}
     m_Modifications:
-    - target: {fileID: 1939383019635253718, guid: 44f06d1a6a3e049019767d7d11f337f2,
-        type: 3}
-      propertyPath: m_Name
-      value: DieObject
-      objectReference: {fileID: 0}
     - target: {fileID: 1943814208783434176, guid: 44f06d1a6a3e049019767d7d11f337f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -210,23 +188,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1939383019635253718, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: m_Name
+      value: DieObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981380909287434984, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: myValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980681661824620124, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: myValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981026362412614746, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: myValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981302121345469556, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: myValue
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980578149809660284, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: myValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981077925490796294, guid: 44f06d1a6a3e049019767d7d11f337f2,
+        type: 3}
+      propertyPath: myValue
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44f06d1a6a3e049019767d7d11f337f2, type: 3}
 --- !u!4 &4642906158158622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1943814208783434176, guid: 44f06d1a6a3e049019767d7d11f337f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939272479170925278}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &23229557621683558 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1926178497306879928, guid: 44f06d1a6a3e049019767d7d11f337f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939272479170925278}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &54639048901799196 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 1885798675431866306, guid: 44f06d1a6a3e049019767d7d11f337f2,
     type: 3}
   m_PrefabInstance: {fileID: 1939272479170925278}
   m_PrefabAsset: {fileID: 0}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a20e557775ea85e419430855f0ecb1a8
+guid: 00bfce4e2ca04be4aa96573f80f3f921
 TextureImporter:
   fileIDToRecycleName:
     21300000: Group_Anim_SpriteSheet_0
@@ -48,7 +48,7 @@ TextureImporter:
     21300086: Group_Anim_SpriteSheet_43
     21300088: Group_Anim_SpriteSheet_44
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
