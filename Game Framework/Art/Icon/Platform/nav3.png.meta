@@ -1,39 +1,18 @@
 fileFormatVersion: 2
 guid: 1a9e348a6d5f88448884a10cfae843c2
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: nav3_0
-  - first:
-      213: 21300002
-    second: nav3_1
-  - first:
-      213: 21300004
-    second: nav3_2
-  - first:
-      213: 21300006
-    second: nav3_3
-  - first:
-      213: 21300008
-    second: nav3_4
-  - first:
-      213: 21300010
-    second: nav3_5
-  - first:
-      213: 21300012
-    second: nav3_6
-  - first:
-      213: 21300014
-    second: nav3_7
-  - first:
-      213: 21300016
-    second: nav3_8
-  - first:
-      213: 21300018
-    second: nav3_8
+  fileIDToRecycleName:
+    21300000: nav3_0
+    21300002: nav3_1
+    21300004: nav3_2
+    21300006: nav3_3
+    21300008: nav3_4
+    21300010: nav3_5
+    21300012: nav3_6
+    21300014: nav3_7
+    21300016: nav3_8
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -50,12 +29,9 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -87,17 +63,11 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
-  applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,10 +77,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -120,10 +88,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -133,10 +99,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -146,10 +110,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -159,10 +121,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -172,10 +132,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -185,9 +143,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -202,13 +158,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: b3ee5a3dd20f74a6aaaf2136e2ac48af
-      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -224,13 +178,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: af309ee4a01d346efa62939093242ba1
-      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -246,13 +198,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: f42a34a541dfc4448858492644005705
-      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -268,13 +218,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 303b2b51728874bdbac6767ada8cbeda
-      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -290,13 +238,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 6a4271994e32f4014a121e1f1454f7df
-      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -312,13 +258,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 0a2304a5496e24057a510c8c218192db
-      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -334,13 +278,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 27be6f30c267146e58fe6ab15475e954
-      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -356,13 +298,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: d2c6d3446a4314e4891f07beaf273154
-      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -378,42 +318,26 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 52486cbf3c9be419da38eada93079a47
-      internalID: 21300016
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
     spriteID: 
-    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
-    nameFileIdTable:
-      nav3_0: 21300000
-      nav3_1: 21300002
-      nav3_2: 21300004
-      nav3_3: 21300006
-      nav3_4: 21300008
-      nav3_5: 21300010
-      nav3_6: 21300012
-      nav3_7: 21300014
-      nav3_8: 21300016
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

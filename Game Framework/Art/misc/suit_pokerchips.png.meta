@@ -1,36 +1,18 @@
 fileFormatVersion: 2
 guid: 1a3bdca50ba2e1146a2ddbc7e54d8c8f
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: suit_pokerchips_0
-  - first:
-      213: 21300002
-    second: suit_pokerchips_1
-  - first:
-      213: 21300004
-    second: suit_pokerchips_2
-  - first:
-      213: 21300006
-    second: suit_pokerchips_3
-  - first:
-      213: 21300008
-    second: suit_pokerchips_4
-  - first:
-      213: 21300010
-    second: suit_pokerchips_5
-  - first:
-      213: 21300012
-    second: suit_pokerchips_6
-  - first:
-      213: 21300014
-    second: suit_pokerchips_7
-  - first:
-      213: 21300016
-    second: suit_pokerchips_8
+  fileIDToRecycleName:
+    21300000: suit_pokerchips_0
+    21300002: suit_pokerchips_1
+    21300004: suit_pokerchips_2
+    21300006: suit_pokerchips_3
+    21300008: suit_pokerchips_4
+    21300010: suit_pokerchips_5
+    21300012: suit_pokerchips_6
+    21300014: suit_pokerchips_7
+    21300016: suit_pokerchips_8
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -47,12 +29,9 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -84,17 +63,11 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
-  applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -104,10 +77,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -117,10 +88,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -130,10 +99,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -143,10 +110,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -156,10 +121,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -169,10 +132,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
+  - serializedVersion: 2
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -182,9 +143,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -199,13 +158,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: ef2a53fa2380f477eb727c31406d5827
-      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -221,13 +178,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 781d120b1f0704178b3ca87e28459210
-      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -243,13 +198,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 4e6a65168978544fd9e1ca46a9c630e8
-      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -265,13 +218,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 4d96aa8ab1603401bb6311fd9af0c3a0
-      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -287,13 +238,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 8c6f66f354ee74d1ba639adbbedb790b
-      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -309,13 +258,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 8ee19d45ba2d94fffb7fee7f7b46d408
-      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -331,13 +278,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: bb395dd165ee040f6ac3b78b753f999e
-      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -353,13 +298,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: bac1f68f9d2c74d41842d12bcc789dbd
-      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -375,42 +318,26 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: a456cc19b947c4697a08976b4a2dedbd
-      internalID: 21300016
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
     spriteID: 
-    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
-    nameFileIdTable:
-      suit_pokerchips_0: 21300000
-      suit_pokerchips_1: 21300002
-      suit_pokerchips_2: 21300004
-      suit_pokerchips_3: 21300006
-      suit_pokerchips_4: 21300008
-      suit_pokerchips_5: 21300010
-      suit_pokerchips_6: 21300012
-      suit_pokerchips_7: 21300014
-      suit_pokerchips_8: 21300016
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Newtonsoft.Json;
 using PlayTable;
 
 namespace PlayTable
@@ -229,7 +228,7 @@ namespace PlayTable
                 Debug.Log("Loading local SmartPiece database");
                 string jsonRaw = File.ReadAllText(smartPieceDataPath);
                 Debug.Log(jsonRaw);
-                uidToSmartPieceData = JsonConvert.DeserializeObject<Dictionary<string, PTSmartpieceObject>>(jsonRaw);
+                uidToSmartPieceData = JsonUtility.FromJson<Dictionary<string, PTSmartpieceObject>>(jsonRaw);
             }
             else
             {
@@ -575,7 +574,7 @@ namespace PlayTable
                     }
                 }
             }
-            string jsonRaw = JsonConvert.SerializeObject(uidToSmartPieceData);
+            string jsonRaw = JsonUtility.ToJson(uidToSmartPieceData);
             print("Writing to file: " + jsonRaw);
             string smartPieceDataPath = Application.persistentDataPath + smartPieceFileName;
             File.WriteAllText(smartPieceDataPath, jsonRaw);

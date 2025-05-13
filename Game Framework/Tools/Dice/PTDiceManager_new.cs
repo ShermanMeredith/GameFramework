@@ -299,7 +299,7 @@ public class PTDiceManager_new : MonoBehaviour
         foreach (PTDie die in Dice)
         {
             die.rigidBody.isKinematic = false;
-            die.rigidBody.linearDamping = 0;
+            die.rigidBody.drag = 0;
             SpringJoint spring = die.rigidBody.gameObject.AddComponent<SpringJoint>();
             spring.minDistance = 0;
             spring.maxDistance = 0;
@@ -456,7 +456,7 @@ public class PTDiceManager_new : MonoBehaviour
         {
             die.rigidBody.isKinematic = false;
             die.rigidBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            die.rigidBody.linearDamping = 1;
+            die.rigidBody.drag = 1;
         }
 
         // disable other draggables
@@ -490,7 +490,7 @@ public class PTDiceManager_new : MonoBehaviour
 
         foreach (PTDie die in Dice)
         {
-            if (new Vector3(die.rigidBody.linearVelocity.x, 0, die.rigidBody.linearVelocity.z).magnitude < VELOCITY_THRESHOLD)
+            if (new Vector3(die.rigidBody.velocity.x, 0, die.rigidBody.velocity.z).magnitude < VELOCITY_THRESHOLD)
             {
                 startedRolling = false;
             }
@@ -511,7 +511,7 @@ public class PTDiceManager_new : MonoBehaviour
             foreach (PTDie die in Dice)
             {
                 die.rigidBody.useGravity = true;
-                die.rigidBody.linearDamping = 0;
+                die.rigidBody.drag = 0;
             }
         }
         else
