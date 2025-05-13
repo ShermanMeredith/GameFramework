@@ -27,7 +27,6 @@ public class PTSeatingIcon : MonoBehaviour
     private PTSeatingBlueprint myBlueprint;
     private float standardShadowOffsetY = -8.9f;
     private int dispenserMaxIndex = 20;
-    private CatanState_CharacterStory.Character character = CatanState_CharacterStory.Character.None;
 
     public PTSeatingManager.PlayerType MyPlayerType { get; private set; }
     public Sprite Avatar { get { return avatarFull.sprite; } }
@@ -37,7 +36,7 @@ public class PTSeatingIcon : MonoBehaviour
     public int SiblingIndex { get; private set; }
     public Vector3 Offset { get { return draggingAvatar.transform.localPosition; } }
     public bool IsAI { get; private set; }
-    public AICharacterData AiCharacter { get; private set; }
+    // public AICharacterData AiCharacter { get; private set; }
 
     private void Start()
     {
@@ -125,19 +124,11 @@ public class PTSeatingIcon : MonoBehaviour
         myBlueprint = blueprint;
         IsAI = blueprint.playerType == PTSeatingManager.PlayerType.AI;
         SetName(blueprint.avatarName);
-        AiCharacter = blueprint.aiCharacter;
-        infoButton.SetActive(AiCharacter != null);
+        // AiCharacter = blueprint.aiCharacter;
+        // infoButton.SetActive(AiCharacter != null);
         MyPlayerType = blueprint.playerType;
         InitSprites(blueprint);
         InitMyLineupZone();
-        if (blueprint.avatarName == "Mary Anne")
-        {
-            character = CatanState_CharacterStory.Character.Maryanne;
-        }
-        else
-        {
-            System.Enum.TryParse(blueprint.avatarName, true, out character);
-        }
     }
 
     private void InitSprites(PTSeatingBlueprint blueprint)
@@ -205,7 +196,7 @@ public class PTSeatingIcon : MonoBehaviour
     {
         // Insert any special Avatar 'secondary info' feature here for press and hold interaction
         // e.g. in Catan, we use this for 'Story Mode' to share AI character backstory
-        CatanStateManager.Instance.DisplayCharacterStory(character);
+        // CatanStateManager.Instance.DisplayCharacterStory(character);
     }
 
     public void ShowFullProfile()

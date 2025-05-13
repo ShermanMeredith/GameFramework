@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PTButton_ChooseOption : PTGameButton
+public class PTButton_ChooseOption : PTGameButton_new
 {
     protected override IEnumerator OnTouchBeginCoroutine()
     {

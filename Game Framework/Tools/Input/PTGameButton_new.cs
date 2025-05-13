@@ -16,12 +16,19 @@ public abstract class PTGameButton_new : PTLocalInput_new
     [SerializeField] private SpriteRenderer selectedSprite;
     public GameButtonState ButtonState { get; protected set; }
 
-    protected virtual void Start()
-    {
+    protected virtual void Start() {
         ButtonState = GameButtonState.On;
         OnLongHoldBegin += Handler_OnLongHoldBegin;
         OnTouchBegin += Handler_OnTouchBegin;
         OnShortHoldBegin += Handler_OnShortHoldBegin;
+
+        PTGlobalInput_new.OnTouchBegin += (PTTouch touch) => 
+        {
+            if (touch.hitsRealtime.Contains(GetComponent<Collider>())) 
+            {
+                touch.canPenetrate = false;
+            }
+        };
     }
 
     private void Handler_OnShortHoldBegin(PTTouch touch)
@@ -41,7 +48,7 @@ public abstract class PTGameButton_new : PTLocalInput_new
         {
             return;
         }
-        StartCoroutine(OnClickCoroutine());
+        StartCoroutine(OnTouchBeginCoroutine());
     }
 
     private void Handler_OnLongHoldBegin(PTTouch touch)
@@ -58,7 +65,7 @@ public abstract class PTGameButton_new : PTLocalInput_new
 
     protected abstract IEnumerator OnShortHoldClickCoroutine();
 
-    protected abstract IEnumerator OnClickCoroutine();
+    protected abstract IEnumerator OnTouchBeginCoroutine();
 
     public virtual IEnumerator OnSetOnCoroutine(float timer)
     {

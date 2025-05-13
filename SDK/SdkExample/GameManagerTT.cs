@@ -101,10 +101,10 @@ public class GameManagerTT : MonoBehaviour {
         while (true)
         {
             //Status text
-            if (NetworkServer.active)
-                textStatus.text = "Discoverable at " + PTDevice.localIPAddress + ":" + NetworkServer.listenPort + "";
-            else
-                textStatus.text = "Inactive";
+            //if (NetworkServer.active)
+            //    textStatus.text = "Discoverable at " + PTDevice.localIPAddress + ":" + NetworkServer.listenPort + "";
+            //else
+            //    textStatus.text = "Inactive";
 
             //cool down
             yield return new WaitForSeconds(updateTimer);

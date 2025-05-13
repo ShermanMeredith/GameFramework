@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PTButton_ResetOption : PTGameButton
+public class PTButton_ResetOption : PTGameButton_new
 {
     protected override IEnumerator OnLongHoldClickCoroutine()
     {

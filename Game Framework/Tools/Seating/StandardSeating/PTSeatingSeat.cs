@@ -13,7 +13,6 @@ public class PTSeatingSeat : MonoBehaviour
     [Header("Game-Specific Settings")]
     [SerializeField] private PTZone_new playerMatPortraitZone;
     [SerializeField] private GameObject destinationPlayerMat;
-    [SerializeField] private PlayerColor myColor;
 
     [Header("Seat Options")]
     [SerializeField] private PTSeatOptions languageOptions;
@@ -213,6 +212,6 @@ public class PTSeatingSeat : MonoBehaviour
 
     public IEnumerator SendSeatToLocationCoroutine()
     {
-        yield return transform.SetLocalPositionCoroutine(moveToLocation, CatanGlobals.ANIMATION_TIMER);
+        yield return transform.SetLocalPositionCoroutine(moveToLocation, PT.DEFAULT_TIMER * 2.5f);
     }
 }

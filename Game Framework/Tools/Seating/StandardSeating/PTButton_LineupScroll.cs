@@ -12,7 +12,7 @@ public class PTButton_LineupScroll : PTGameButton_new
     [SerializeField] private GameObject accountGlow;
     private bool isScrolling = false;
 
-    protected override IEnumerator OnClickCoroutine()
+    protected override IEnumerator OnTouchBeginCoroutine()
     {
         if(isScrolling == false)
         {

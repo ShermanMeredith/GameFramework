@@ -205,11 +205,6 @@ namespace PlayTable
             PTGlobalInput_new.OnTouchEnd += OnTouchEndReceiver;
 
             InitializeSmartPieceData();
-            //if (PTHelper.singleton == null)
-            //{
-
-            StartCoroutine(ForceInitPTHelper());
-            //}
 
             if (PTService_new.Instance == null)
             {
@@ -224,16 +219,6 @@ namespace PlayTable
             PTService_new.Instance.ResetNfc();
 
             StartCoroutine(HeartBeatScan());
-        }
-
-        IEnumerator ForceInitPTHelper()
-        {
-            while (PTHelper.singleton == null)
-            {
-                PTHelper.NewGameObject();
-                yield return new WaitForSeconds(0.1f);
-            }
-            PTHelper.singleton.showGUI = false;
         }
 
         private void InitializeSmartPieceData()
@@ -390,7 +375,7 @@ namespace PlayTable
             {
                 float timeUntilNextScan = scanFrequency;
                 float scanInterval = scanFrequency / (PTInputManager.touches.Count + scanPoints.Length + 1);
-                if (scanMode != ScanMode.Off && PTInputManager.touches.Count > 0 && !CatanSettings.Instance.IsOpen)
+                if (scanMode != ScanMode.Off && PTInputManager.touches.Count > 0)
                 {
                     // copy the list in case new touches are registered mid-scan
                     List<PTTouch> touches = new List<PTTouch>(PTInputManager.touches);
@@ -560,7 +545,7 @@ namespace PlayTable
                 if (spMarkers.ContainsKey(sp.origin.touch) == false)
                 {
                     // SmartPiece Marker does not exist yet. Create one
-                    GameObject marker = Instantiate(spMarkerPrefab, Vector3.Lerp(sp.origin.touch.hitPoint, Camera.main.GetComponent<CatanCameraController>().GamePosition, 1f/10f), Quaternion.Euler(90, 0, 0));
+                    GameObject marker = Instantiate(spMarkerPrefab, Vector3.Lerp(sp.origin.touch.hitPoint, new Vector3(0,10,0), 1f/10f), Quaternion.Euler(90, 0, 0));
                     marker.GetComponent<PTSmartPieceMarker>().Init(sp);
                     sp.origin.touch.AddFollower(marker.GetComponent<Collider>(), Vector3.up);
                     spMarkers.Add(sp.origin.touch, marker);

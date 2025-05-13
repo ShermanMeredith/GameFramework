@@ -11,7 +11,7 @@ public class PTSeatingBlueprint : PTPlayerBlueprint
     public Vector2 portraitOffset, shadowOffset, shadowSize;
 
     public PTSeatingManager.PlayerType playerType;
-    public AICharacterData aiCharacter;
+    // public AICharacterData aiCharacter;
 
     public override PTPlayer ApplyTo(PTPlayer player)
     {

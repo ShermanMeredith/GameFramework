@@ -1424,7 +1424,7 @@ namespace PlayTable
                         //+ enterPositionOffset
                         + touch.ray.PointOnPlane(Vector3.up, Vector3.up * (enterPosition.y + dragWorldPositionOffset.y));
 
-                    transform.position = Vector3.Lerp(targetPoint, Camera.main.GetComponent<CatanCameraController>().GamePosition, enterPositionOffset.y / 10);
+                    transform.position = Vector3.Lerp(targetPoint, new Vector3(0,10,0), enterPositionOffset.y / 10);
                 }
                 PTDragRestriction dragRestriction = transform.GetComponent<PTDragRestriction>();
                 if (dragRestriction != null)

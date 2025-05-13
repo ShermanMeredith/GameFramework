@@ -191,7 +191,8 @@ public class PTDiceManager_new : MonoBehaviour
         for(int i = 0; i < DiceDraggables.Length; ++i)
         {
             DiceDraggables[i].GetComponent<Collider>().enabled = isEnabled;
-            DiceDraggables[i].transform.position = Vector3.Lerp(Dice[i].rigidBody.transform.position, Camera.main.GetComponent<CatanCameraController>().GamePosition, 0.15f);
+            // TODO: Reset dice position on enable
+            // DiceDraggables[i].transform.position = Vector3.Lerp(Dice[i].rigidBody.transform.position, Camera.main.GetComponent<CatanCameraController>().GamePosition, 0.15f);
         }
     }
 
@@ -298,7 +299,7 @@ public class PTDiceManager_new : MonoBehaviour
         foreach (PTDie die in Dice)
         {
             die.rigidBody.isKinematic = false;
-            die.rigidBody.drag = 0;
+            die.rigidBody.linearDamping = 0;
             SpringJoint spring = die.rigidBody.gameObject.AddComponent<SpringJoint>();
             spring.minDistance = 0;
             spring.maxDistance = 0;
@@ -444,31 +445,6 @@ public class PTDiceManager_new : MonoBehaviour
                 }
             }
         }
-        foreach (PTDie die in Dice)
-        {
-            foreach (PTPlayer player in PTTableTop.players)
-            {
-                CatanPlayer catanPlayer = player.GetComponentInParent<CatanPlayer>();
-                foreach(CatanGamePiece piece in catanPlayer.myRoads)
-                {
-                    Physics.IgnoreCollision(die.rigidBody.GetComponent<Collider>(), piece.GetComponent<Collider>());
-                }
-                foreach (CatanGamePiece piece in catanPlayer.mySettlements)
-                {
-                    Physics.IgnoreCollision(die.rigidBody.GetComponent<Collider>(), piece.GetComponent<Collider>());
-                }
-                foreach (CatanGamePiece piece in catanPlayer.myCities)
-                {
-                    Physics.IgnoreCollision(die.rigidBody.GetComponent<Collider>(), piece.GetComponent<Collider>());
-                }
-            }
-            foreach(Tile tile in CatanGameBoard.Instance.BoardTiles)
-            {
-                Physics.IgnoreCollision(die.rigidBody.GetComponent<Collider>(), tile.GetComponent<Collider>());
-                Physics.IgnoreCollision(die.rigidBody.GetComponent<Collider>(), tile.numberTokenZone.GetComponent<Collider>());
-            }
-            Physics.IgnoreCollision(die.rigidBody.GetComponent<Collider>(), Robber.Instance.GetComponent<Collider>());
-        }
     }
 
     private void DiceDraggedHandler(Transform dragging)
@@ -480,7 +456,7 @@ public class PTDiceManager_new : MonoBehaviour
         {
             die.rigidBody.isKinematic = false;
             die.rigidBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            die.rigidBody.drag = 1;
+            die.rigidBody.linearDamping = 1;
         }
 
         // disable other draggables
@@ -505,10 +481,6 @@ public class PTDiceManager_new : MonoBehaviour
         {
             joints[i].connectedBody = Dice[i].rigidBody;
         }
-
-        CatanRuleManager.CurrentPlayer.SetDevCardsDraggable(false);
-        CatanRuleManager.CurrentPlayer.actionMenu.SetVisible(ActionMenuVisibility.Hidden);
-        CatanRuleManager.CurrentPlayer.GetComponentInChildren<CatanNudgeBanner>().HideNudgeBanner();
     }
 
     private IEnumerator DiceDroppedHandler(PTTouchFollower follower)
@@ -518,7 +490,7 @@ public class PTDiceManager_new : MonoBehaviour
 
         foreach (PTDie die in Dice)
         {
-            if (new Vector3(die.rigidBody.velocity.x, 0, die.rigidBody.velocity.z).magnitude < VELOCITY_THRESHOLD)
+            if (new Vector3(die.rigidBody.linearVelocity.x, 0, die.rigidBody.linearVelocity.z).magnitude < VELOCITY_THRESHOLD)
             {
                 startedRolling = false;
             }
@@ -539,7 +511,7 @@ public class PTDiceManager_new : MonoBehaviour
             foreach (PTDie die in Dice)
             {
                 die.rigidBody.useGravity = true;
-                die.rigidBody.drag = 0;
+                die.rigidBody.linearDamping = 0;
             }
         }
         else
@@ -553,8 +525,6 @@ public class PTDiceManager_new : MonoBehaviour
             }
 
             EnableDice(true);
-            CatanRuleManager.CurrentPlayer.SetDevCardsDraggable(true);
-            CatanRuleManager.CurrentPlayer.SwitchTurnState(TurnState.WaitingForDiceRoll);
         }
 
         HasStartedRolling = startedRolling;

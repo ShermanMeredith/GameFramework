@@ -73,7 +73,7 @@ public class PTDie : MonoBehaviour
     public void Roll(float power)
     {
         rigidBody.isKinematic = false;
-        rigidBody.velocity = Vector3.zero;
+        rigidBody.linearVelocity = Vector3.zero;
 
         transform.rotation = Random.rotation;
 
@@ -86,7 +86,7 @@ public class PTDie : MonoBehaviour
     public void Roll(float power, Vector3 target)
     {
         rigidBody.isKinematic = false;
-        rigidBody.velocity = Vector3.zero;
+        rigidBody.linearVelocity = Vector3.zero;
 
         rigidBody.AddForce(Vector3.Normalize(target - rigidBody.transform.position) * power * 2, ForceMode.Impulse);
         float randomXTorque = Random.Range(8f, 10f);
