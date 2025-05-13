@@ -69,19 +69,19 @@ namespace PlayTable
         {
             groups = GetComponentInParent<PTFlatGroups>();
 
-            PTGlobalInput_new.OnDragBegin += (PTTouch touch) =>
+            PTGlobalInput.OnDragBegin += (PTTouch touch) =>
             {
                 if (IsDraggingTab(touch))
                 {
-                    touch.AddFollower(GetComponent<Collider>(), GetComponent<PTLocalInput_new>().dragWorldPositionOffset);
+                    touch.AddFollower(GetComponent<Collider>(), GetComponent<PTLocalInput>().dragWorldPositionOffset);
 
                     foreach (PTFlatGroupElement element in Collection.Value.content)
                     {
-                        touch.AddFollower(element.GetComponent<Collider>(), GetComponent<PTLocalInput_new>().dragWorldPositionOffset);
+                        touch.AddFollower(element.GetComponent<Collider>(), GetComponent<PTLocalInput>().dragWorldPositionOffset);
                     }
                 }
             };
-            PTGlobalInput_new.OnDrag += (PTTouch touch) =>
+            PTGlobalInput.OnDrag += (PTTouch touch) =>
             {
                 if (IsDraggingTab(touch))
                 {
@@ -126,10 +126,10 @@ namespace PlayTable
             int size = Collection.Value == null ? 0 : Collection.Value.Count;
             if (size > 0)
             {
-                List<PTTouch> touchesDraggingThis = PTGlobalInput_new.FindTouchesDragging(GetComponent<Collider>());
+                List<PTTouch> touchesDraggingThis = PTGlobalInput.FindTouchesDragging(GetComponent<Collider>());
                 if (touchesDraggingThis == null || touchesDraggingThis.Count == 0)
                 {
-                    transform.SetLocalPosition(groups.GetComponent<PTLayoutZone_new>().TargetLocalPositionOf(groups.GetSiblingIndex(Collection.Value.content[0])), groups.timerAnimation);
+                    transform.SetLocalPosition(groups.GetComponent<PTLayoutZone>().TargetLocalPositionOf(groups.GetSiblingIndex(Collection.Value.content[0])), groups.timerAnimation);
                 }
             }
             switch (size)

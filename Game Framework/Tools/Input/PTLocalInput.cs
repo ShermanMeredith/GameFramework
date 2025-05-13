@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PlayTable
 {
     [RequireComponent(typeof(Collider))]
-    public abstract class PTLocalInput_new : MonoBehaviour
+    public abstract class PTLocalInput : MonoBehaviour
     {
         #region fields
         public bool isLargeTouchInteractive = false;
@@ -28,11 +28,11 @@ namespace PlayTable
         /// The object being instantiated when touch begins, following touch when draging
         /// </summary>
         [HideInInspector]
-        public PTLocalInput_new prefabDragToSpawn;
+        public PTLocalInput prefabDragToSpawn;
         /// <summary>
         /// The origin zone of this object when dragging
         /// </summary>
-        private PTZone_new fromZone;
+        private PTZone fromZone;
         #endregion
 
         #region property
@@ -190,7 +190,7 @@ namespace PlayTable
 
             OnDragBegin += (PTTouch touch) =>
             {
-                fromZone = GetComponentInParent<PTZone_new>();
+                fromZone = GetComponentInParent<PTZone>();
                 touch.canPenetrate = true;
             };
 
@@ -199,7 +199,7 @@ namespace PlayTable
                 if (follower.hitZones.Count != 0)
                 {
                     bool acceptedIntoZone = false;
-                    foreach (PTZone_new zone in follower.hitZones)
+                    foreach (PTZone zone in follower.hitZones)
                     {
                         if (zone.Accepts(follower.transform))
                         {
@@ -228,9 +228,9 @@ namespace PlayTable
 
         public void SendBack()
         {
-            if (GetComponentInParent<PTZone_new>())
+            if (GetComponentInParent<PTZone>())
             {
-                GetComponentInParent<PTZone_new>().Add(transform);
+                GetComponentInParent<PTZone>().Add(transform);
             }
         }
     }

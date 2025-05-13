@@ -10,7 +10,7 @@ public enum GameButtonState
     SelectedContinue
 }
 
-public abstract class PTGameButton_new : PTLocalInput_new
+public abstract class PTGameButton : PTLocalInput
 {
     [SerializeField] private SpriteRenderer availableSprite;
     [SerializeField] private SpriteRenderer selectedSprite;
@@ -22,7 +22,7 @@ public abstract class PTGameButton_new : PTLocalInput_new
         OnTouchBegin += Handler_OnTouchBegin;
         OnShortHoldBegin += Handler_OnShortHoldBegin;
 
-        PTGlobalInput_new.OnTouchBegin += (PTTouch touch) => 
+        PTGlobalInput.OnTouchBegin += (PTTouch touch) => 
         {
             if (touch.hitsRealtime.Contains(GetComponent<Collider>())) 
             {

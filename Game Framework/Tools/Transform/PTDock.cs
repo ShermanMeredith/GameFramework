@@ -9,13 +9,13 @@ namespace PlayTable
     /// A template for player dock as a start
     /// </summary>
     [RequireComponent(typeof(PTPlayer))]
-    public class PTDock : PTLayoutZone_new
+    public class PTDock : PTLayoutZone
     {
         #region fields
         /// <summary>
         /// The place where a bunch of objects go
         /// </summary>
-        public PTZone_new hand;
+        public PTZone hand;
         #endregion
 
         #region delegates

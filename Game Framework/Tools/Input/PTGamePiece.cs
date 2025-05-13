@@ -6,7 +6,7 @@ using PlayTable;
 /// <summary>
 /// PTGamePiece is an object in scene that is draggable and droppable into zones. Examples include: Cards, Tokens...
 /// </summary>
-public class PTGamePiece_new : PTLocalInput_new
+public class PTGamePiece : PTLocalInput
 {
     #region fields
     [SerializeField] private bool isDraggable = false;
@@ -23,7 +23,7 @@ public class PTGamePiece_new : PTLocalInput_new
     private Vector3 startingScale;
     private Vector3 hoverScale;
 
-    private PTZone_new hoverZone = null;
+    private PTZone hoverZone = null;
 
     [SerializeField]
     private float touchFeedbackScale = 1.2f;
@@ -67,9 +67,9 @@ public class PTGamePiece_new : PTLocalInput_new
             PTTouchFollower follower = touch.FindFollowerBy(GetComponent<Collider>());
             if (follower != null)
             {
-                List<PTZone_new> hitZones = follower.hitZones;
-                PTZone_new hitZone = null;
-                foreach (PTZone_new zone in hitZones)
+                List<PTZone> hitZones = follower.hitZones;
+                PTZone hitZone = null;
+                foreach (PTZone zone in hitZones)
                 {
                     if (zone.Accepts(transform))
                     {
@@ -164,7 +164,7 @@ public class PTGamePiece_new : PTLocalInput_new
             }
         };
 
-        OnZoneAddReject += (PTZone_new zone) =>
+        OnZoneAddReject += (PTZone zone) =>
         {
             SendBack();
         };

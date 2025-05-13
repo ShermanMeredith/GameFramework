@@ -55,7 +55,7 @@ namespace PlayTable
                 return GetType().FullName;
             }
         }
-        public PTLocalInput_new localInput { get { return GetComponent<PTLocalInput_new>(); } }
+        public PTLocalInput localInput { get { return GetComponent<PTLocalInput>(); } }
         #endregion
 
         #region Delegates
@@ -72,7 +72,7 @@ namespace PlayTable
         }
         private void OnTransformParentChanged()
         {
-            PTZone_new parentZone = GetComponentInParent<PTZone_new>();
+            PTZone parentZone = GetComponentInParent<PTZone>();
             if (parentZone)
             {
                 foreach (Transform child in parentZone.content)

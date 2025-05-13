@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using PlayTable;
 
-public class PTSmartPieceDebugger_new : MonoBehaviour
+public class PTSmartPieceDebugger : MonoBehaviour
 {
     [SerializeField]
     Text verified;
@@ -16,22 +16,22 @@ public class PTSmartPieceDebugger_new : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PTGlobalInput_new.OnTouchBegin += (PTTouch touch) =>
+        PTGlobalInput.OnTouchBegin += (PTTouch touch) =>
         {
             PTSmartPieceManager.Instance.SetSpMarker(new ScannedSmartPiece() { origin = new ScanOrigin(touch), uid = ("touch")});
         };
-        PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+        PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
         {
             //touches--;
             //Debug.Log("touch ended" + touches);
         };
 
-        PTGlobalInput_new.OnShortHoldBegin += (PTTouch touch) =>
+        PTGlobalInput.OnShortHoldBegin += (PTTouch touch) =>
         {
             print(touch + "SHORT HOLD BEGIN");
         };
 
-        PTGlobalInput_new.OnTouchMoveBegin += (PTTouch touch) =>
+        PTGlobalInput.OnTouchMoveBegin += (PTTouch touch) =>
         {
             print(touch + "DRAG BEGIN");
         };

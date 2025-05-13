@@ -42,7 +42,7 @@ public class PTSeatingIcon : MonoBehaviour
     {
         /*if (PTSeatingManager.IsCharacterInfoSupported)
         {
-            GetComponent<PTLocalInput_new>().OnDoubleClicked += (PTTouch touch) =>
+            GetComponent<PTLocalInput>().OnDoubleClicked += (PTTouch touch) =>
             {
                 if (!IsSeated)
                 {
@@ -50,8 +50,8 @@ public class PTSeatingIcon : MonoBehaviour
                 }
             };
         }*/
-        GetComponent<PTLocalInput_new>().OnDragBegin += OnDragBeginHandler;
-        GetComponent<PTLocalInput_new>().OnReleased += OnReleasedHandler;
+        GetComponent<PTLocalInput>().OnDragBegin += OnDragBeginHandler;
+        GetComponent<PTLocalInput>().OnReleased += OnReleasedHandler;
     }
 
     private void OnDragBeginHandler(PTTouch touch)

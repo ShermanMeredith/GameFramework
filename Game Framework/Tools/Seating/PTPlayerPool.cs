@@ -21,11 +21,11 @@ public class PTPlayerPool : MonoBehaviour
         if (FindObjectsOfType<PTPlayer>().Length < MAX_PLAYER && !buttonAddPlayer.gameObject.activeSelf)
         {
             buttonAddPlayer.gameObject.SetActive(true);
-            GetComponent<PTLayoutZone_new>().Arrange();
+            GetComponent<PTLayoutZone>().Arrange();
 
         } else if (GetComponentsInChildren<PTPlayer>().Length != previousNumberOfPlayersInPool)
         {
-            GetComponent<PTLayoutZone_new>().Arrange();
+            GetComponent<PTLayoutZone>().Arrange();
             previousNumberOfPlayersInPool = GetComponentsInChildren<PTPlayer>().Length;
         }
 

@@ -200,22 +200,22 @@ namespace PlayTable
             
             //define callbacks
             PTPlatform.OnResultGetSmartpiece += OnResultGetSmartpiece;
-            PTGlobalInput_new.OnTouchBegin += ScanTouch;
-            PTGlobalInput_new.OnTouchEnd += OnTouchEndReceiver;
+            PTGlobalInput.OnTouchBegin += ScanTouch;
+            PTGlobalInput.OnTouchEnd += OnTouchEndReceiver;
 
             InitializeSmartPieceData();
 
-            if (PTService_new.Instance == null)
+            if (PTService.Instance == null)
             {
-                PTService_new ptService = gameObject.AddComponent<PTService_new>();
+                PTService ptService = gameObject.AddComponent<PTService>();
             }
             scanPoints = FindObjectsOfType<PTScanPoint>();
         }
 
         private void Start()
         {
-            PTService_new.Instance.GpioInitialize();
-            PTService_new.Instance.ResetNfc();
+            PTService.Instance.GpioInitialize();
+            PTService.Instance.ResetNfc();
 
             StartCoroutine(HeartBeatScan());
         }
@@ -349,7 +349,7 @@ namespace PlayTable
         {
             foreach (PTTouch touch in PTInputManager.touches)
             {
-                PTGlobalInput_new.OnTouchEnd(touch);
+                PTGlobalInput.OnTouchEnd(touch);
             }
         }
 
@@ -407,7 +407,7 @@ namespace PlayTable
         private void ScanPoint(PTScanPoint point)
         {
             Vector2 screenPosition = Camera.main.WorldToScreenPoint(point.transform.position);
-            string scannedUid = PTService_new.Instance.Scan((int)screenPosition.x, Screen.height - (int)screenPosition.y);
+            string scannedUid = PTService.Instance.Scan((int)screenPosition.x, Screen.height - (int)screenPosition.y);
 
             if (scannedUid != null && scannedUid != "null" && scannedUid != "")
             {
@@ -455,7 +455,7 @@ namespace PlayTable
             }
             else
             {
-                string scannedUid = PTService_new.Instance.Scan(x, y);
+                string scannedUid = PTService.Instance.Scan(x, y);
 
                 if (scannedUid != null && scannedUid != "null" && scannedUid != "")
                 {
@@ -475,7 +475,7 @@ namespace PlayTable
                     int xToScan = (xOffset * ANT_SIZE_X / 2) + x;
                     int yToScan = (yOffset * ANT_SIZE_Y / 2) + y;
 
-                    string result = PTService_new.Instance.Scan(xToScan, yToScan);
+                    string result = PTService.Instance.Scan(xToScan, yToScan);
                     if (result != "null")
                     {
                         if (scannedUids == null)

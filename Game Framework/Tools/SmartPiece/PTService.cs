@@ -17,9 +17,9 @@ public class SmartPieceLocation
 
 public enum Bank { A, B, C, D, E, F };
 
-public class PTService_new : MonoBehaviour
+public class PTService : MonoBehaviour
 {
-    public static PTService_new Instance { get; private set; }
+    public static PTService Instance { get; private set; }
     private static string fullClassName = "com.blokparty.ptserviceproxy.PTServiceProxy";
     AndroidJavaObject proxyObject = null;
     string id = "null";

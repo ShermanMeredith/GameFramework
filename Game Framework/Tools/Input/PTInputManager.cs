@@ -306,9 +306,9 @@ namespace PlayTable
                             touch.canPenetrate = defaultCanPenetrate;
 
                             //OnTouchBegin
-                            if (PTGlobalInput_new.OnTouchBegin != null)
+                            if (PTGlobalInput.OnTouchBegin != null)
                             {
-                                PTGlobalInput_new.OnTouchBegin(touch);
+                                PTGlobalInput.OnTouchBegin(touch);
                             }
 
                             //_hitsBegan
@@ -328,9 +328,9 @@ namespace PlayTable
                             }
 
                             //OnTouchHitBegin
-                            if (PTGlobalInput_new.OnTouchHitBegin != null)
+                            if (PTGlobalInput.OnTouchHitBegin != null)
                             {
-                                PTGlobalInput_new.OnTouchHitBegin(touch);
+                                PTGlobalInput.OnTouchHitBegin(touch);
                             }
                         }
                     }
@@ -348,9 +348,9 @@ namespace PlayTable
                 touch.path.Add(new KeyValuePair<DateTime, Vector2>(DateTime.Now, touch.position));
 
                 //OnTouch
-                if (PTGlobalInput_new.OnTouch != null)
+                if (PTGlobalInput.OnTouch != null)
                 {
-                    PTGlobalInput_new.OnTouch(touch);
+                    PTGlobalInput.OnTouch(touch);
                 }
 
                 //End
@@ -359,27 +359,27 @@ namespace PlayTable
                     try { touches.Remove(touch); } catch { }
 
                     //OnEnd
-                    if (PTGlobalInput_new.OnTouchEnd != null)
+                    if (PTGlobalInput.OnTouchEnd != null)
                     {
-                        PTGlobalInput_new.OnTouchEnd(touch);
+                        PTGlobalInput.OnTouchEnd(touch);
                     }
 
                     if (touch.life.TotalSeconds < SPAN_CLICK
                             && (touch.position - touch.initPosition).sqrMagnitude < DISTANCE_FLICK_SQR)
                     {
                         //OnClicked
-                        if (PTGlobalInput_new.OnClicked != null)
+                        if (PTGlobalInput.OnClicked != null)
                         {
-                            PTGlobalInput_new.OnClicked(touch);
+                            PTGlobalInput.OnClicked(touch);
                         }
                     }
 
                     if (touch.life.TotalSeconds < SPAN_FLICK
                             && (touch.position - touch.initPosition).sqrMagnitude >= DISTANCE_FLICK_SQR)
                     {
-                        if (PTGlobalInput_new.OnFlicked != null)
+                        if (PTGlobalInput.OnFlicked != null)
                         {
-                            PTGlobalInput_new.OnFlicked(touch);
+                            PTGlobalInput.OnFlicked(touch);
                         }
                     }
                 }
@@ -429,18 +429,18 @@ namespace PlayTable
                         if (collider && exists.ContainsKey(collider))
                         {
                             try { currhitsDict.Add(collider, exists[collider]); } catch { }
-                            if (PTGlobalInput_new.OnTouchInside != null)
+                            if (PTGlobalInput.OnTouchInside != null)
                             {
-                                PTGlobalInput_new.OnTouchInside(touch, collider);
+                                PTGlobalInput.OnTouchInside(touch, collider);
                             }
                         }
                         else
                         {
                             try { currhitsDict.Add(collider, DateTime.Now); } catch { }
 
-                            if (PTGlobalInput_new.OnTouchEnter != null)
+                            if (PTGlobalInput.OnTouchEnter != null)
                             {
-                                PTGlobalInput_new.OnTouchEnter(touch, collider);
+                                PTGlobalInput.OnTouchEnter(touch, collider);
                             }
                         }
                     }
@@ -457,9 +457,9 @@ namespace PlayTable
                 foreach (Collider collider in exists.Keys)
                 {
                     //OnExit
-                    if (PTGlobalInput_new.OnTouchExit != null)
+                    if (PTGlobalInput.OnTouchExit != null)
                     {
-                        PTGlobalInput_new.OnTouchExit(touch, collider);
+                        PTGlobalInput.OnTouchExit(touch, collider);
                     }
                 }
             }
@@ -486,7 +486,7 @@ namespace PlayTable
         {
             foreach (Collider collider in touchesBegan.Keys)
             {
-                if (PTGlobalInput_new.OnMultiTouch != null)
+                if (PTGlobalInput.OnMultiTouch != null)
                 {
                     int count = touchesBegan[collider].Keys.Count;
                     PTTouch[] currTouches = new PTTouch[count];
@@ -496,7 +496,7 @@ namespace PlayTable
                         currTouches[i] = touch;
                         i++;
                     }
-                    PTGlobalInput_new.OnMultiTouch(collider, currTouches);
+                    PTGlobalInput.OnMultiTouch(collider, currTouches);
                 }
             }
         }
@@ -530,19 +530,19 @@ namespace PlayTable
         }
         private void InvokeAdvancedGestures()
         {
-            PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+            PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
             {
                 touch.canPenetrate = defaultCanPenetrate;
             };
 
             //Add exclusive clicks 
-            PTGlobalInput_new.OnClicked += (PTTouch touch) =>
+            PTGlobalInput.OnClicked += (PTTouch touch) =>
             {
                 AddRapidClick(touch);
             };
 
             //Change hold phases
-            PTGlobalInput_new.OnHold += (PTTouch touch) =>
+            PTGlobalInput.OnHold += (PTTouch touch) =>
             {
                 //phaseHold
                 switch (touch.phase)
@@ -552,33 +552,33 @@ namespace PlayTable
                         if (touch.spanStationary.TotalSeconds > TIME_SHORTHOLD)
                         {
                             touch.phase = PTTouchPhase.StationaryShort;
-                            if (PTGlobalInput_new.OnShortHoldBegin != null)
+                            if (PTGlobalInput.OnShortHoldBegin != null)
                             {
-                                PTGlobalInput_new.OnShortHoldBegin(touch);
+                                PTGlobalInput.OnShortHoldBegin(touch);
                             }
                         }
                         break;
                     case PTTouchPhase.StationaryShort:
                         //OnShortHold
-                        if (PTGlobalInput_new.OnShortHold != null)
+                        if (PTGlobalInput.OnShortHold != null)
                         {
-                            PTGlobalInput_new.OnShortHold(touch);
+                            PTGlobalInput.OnShortHold(touch);
                         }
                         //OnLongHoldBegin
                         if (touch.spanStationary.TotalSeconds > TIME_LONGHOLD)
                         {
                             touch.phase = PTTouchPhase.StationaryLong;
-                            if (PTGlobalInput_new.OnLongHoldBegin != null)
+                            if (PTGlobalInput.OnLongHoldBegin != null)
                             {
-                                PTGlobalInput_new.OnLongHoldBegin(touch);
+                                PTGlobalInput.OnLongHoldBegin(touch);
                             }
                         }
                         break;
                     case PTTouchPhase.StationaryLong:
                         //OnLongHold
-                        if (PTGlobalInput_new.OnLongHold != null)
+                        if (PTGlobalInput.OnLongHold != null)
                         {
-                            PTGlobalInput_new.OnLongHold(touch);
+                            PTGlobalInput.OnLongHold(touch);
                         }
                         break;
 
@@ -586,13 +586,13 @@ namespace PlayTable
             };
 
             //OnDropped
-            PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+            PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
             {
                 foreach (PTTouchFollower draggable in touch.followers)
                 {
-                    if (PTGlobalInput_new.OnReleased != null)
+                    if (PTGlobalInput.OnReleased != null)
                     {
-                        PTGlobalInput_new.OnReleased(touch, draggable);
+                        PTGlobalInput.OnReleased(touch, draggable);
                     }
                 }
             };
@@ -600,13 +600,13 @@ namespace PlayTable
         private void RegisterLocalDelegates()
         {
             //localInput.OnTouchBegin
-            PTGlobalInput_new.OnTouchHitBegin += (PTTouch touch) =>
+            PTGlobalInput.OnTouchHitBegin += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hitsBegin.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             if (localInput.OnTouchBegin != null)
@@ -614,8 +614,8 @@ namespace PlayTable
                                 localInput.OnTouchBegin(touch);
                             }
 
-                            PTGamePiece_new gamePiece = collider.GetComponent<PTGamePiece_new>();
-                            //Drag to spawn another object with PTLocalInput_new component
+                            PTGamePiece gamePiece = collider.GetComponent<PTGamePiece>();
+                            //Drag to spawn another object with PTLocalInput component
                             if (gamePiece && !gamePiece.IsDraggable && localInput.prefabDragToSpawn)
                             {
                                 Collider colliderNewObject = Instantiate(
@@ -635,13 +635,13 @@ namespace PlayTable
             };
 
             //localInput.OnTouchEnd_EndOnThis
-            PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+            PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnTouchEnd_EndOnThis != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnTouchEnd_EndOnThis(touch);
@@ -651,13 +651,13 @@ namespace PlayTable
             };
 
             //localInput.OnTouchEnd_BeginOnThis
-            PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+            PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hitsBegin.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnTouchEnd_BeginOnThis != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnTouchEnd_BeginOnThis(touch);
@@ -667,11 +667,11 @@ namespace PlayTable
             };
 
             //localInput.OnTouchEnter
-            PTGlobalInput_new.OnTouchEnter += (PTTouch touch, Collider collider) =>
+            PTGlobalInput.OnTouchEnter += (PTTouch touch, Collider collider) =>
             {
                 if (collider)
                 {
-                    PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                    PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                     if (localInput && localInput.OnTouchEnter != null && isLocalInputInteractiveToTouch(localInput, touch))
                     {
                         localInput.OnTouchEnter(touch);
@@ -680,11 +680,11 @@ namespace PlayTable
             };
 
             //OnTouch, OnTouchHit
-            PTGlobalInput_new.OnTouch += (PTTouch touch) =>
+            PTGlobalInput.OnTouch += (PTTouch touch) =>
             {
                 if (touch.hitBegan)
                 {
-                    PTLocalInput_new localInput_Begin = touch.hitBegan.GetComponent<PTLocalInput_new>();
+                    PTLocalInput localInput_Begin = touch.hitBegan.GetComponent<PTLocalInput>();
                     if (localInput_Begin && isLocalInputInteractiveToTouch(localInput_Begin, touch))
                     {
                         if (localInput_Begin.OnTouch != null)
@@ -698,7 +698,7 @@ namespace PlayTable
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnTouchHit != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnTouchHit(touch);
@@ -708,11 +708,11 @@ namespace PlayTable
             };
 
             //localInput.OnTouchExit
-            PTGlobalInput_new.OnTouchExit += (PTTouch touch, Collider collider) =>
+            PTGlobalInput.OnTouchExit += (PTTouch touch, Collider collider) =>
             {
                 if (collider)
                 {
-                    PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                    PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                     if (localInput && localInput.OnTouchExit != null && isLocalInputInteractiveToTouch(localInput, touch))
                     {
                         localInput.OnTouchExit(touch);
@@ -721,13 +721,13 @@ namespace PlayTable
             };
 
             //localInput.OnTouchMove
-            PTGlobalInput_new.OnTouchMove += (PTTouch touch) =>
+            PTGlobalInput.OnTouchMove += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnTouchMove != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnTouchMove(touch);
@@ -737,13 +737,13 @@ namespace PlayTable
             };
 
             //localInput.OnTouchMoveBegin
-            PTGlobalInput_new.OnTouchMoveBegin += (PTTouch touch) =>
+            PTGlobalInput.OnTouchMoveBegin += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnTouchMoveBegin != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnTouchMoveBegin(touch);
@@ -753,13 +753,13 @@ namespace PlayTable
             };
 
             //localInput.OnHold
-            PTGlobalInput_new.OnHold += (PTTouch touch) =>
+            PTGlobalInput.OnHold += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnHold != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnHold(touch);
@@ -769,13 +769,13 @@ namespace PlayTable
             };
 
             //localInput.OnHoldBegin
-            PTGlobalInput_new.OnHoldBegin += (PTTouch touch) =>
+            PTGlobalInput.OnHoldBegin += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnHoldBegin != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnHoldBegin(touch);
@@ -785,13 +785,13 @@ namespace PlayTable
             };
 
             //localInput.OnShortHold
-            PTGlobalInput_new.OnShortHold += (PTTouch touch) =>
+            PTGlobalInput.OnShortHold += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnShortHold != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnShortHold(touch);
@@ -801,13 +801,13 @@ namespace PlayTable
             };
 
             //localInput.OnShortHoldBegin
-            PTGlobalInput_new.OnShortHoldBegin += (PTTouch touch) =>
+            PTGlobalInput.OnShortHoldBegin += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnShortHoldBegin != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnShortHoldBegin(touch);
@@ -817,13 +817,13 @@ namespace PlayTable
             };
 
             //localInput.OnLongHold
-            PTGlobalInput_new.OnLongHold += (PTTouch touch) =>
+            PTGlobalInput.OnLongHold += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnLongHold != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnLongHold(touch);
@@ -833,13 +833,13 @@ namespace PlayTable
             };
 
             //localInput.OnLongHoldBegin
-            PTGlobalInput_new.OnLongHoldBegin += (PTTouch touch) =>
+            PTGlobalInput.OnLongHoldBegin += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnLongHoldBegin != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnLongHoldBegin(touch);
@@ -849,7 +849,7 @@ namespace PlayTable
             };
 
             //OnDrag, OnDragMove
-            PTGlobalInput_new.OnDrag += (PTTouch touch) =>
+            PTGlobalInput.OnDrag += (PTTouch touch) =>
             {
                 //localInput.OnDrag
                 HashSet<Transform> transformsOnDrag = new HashSet<Transform>();
@@ -868,7 +868,7 @@ namespace PlayTable
                 {
                     if (trans)
                     {
-                        PTLocalInput_new localInput = trans.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = trans.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnDrag != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnDrag(touch);
@@ -882,7 +882,7 @@ namespace PlayTable
                 {
                     if (follower != null && follower.collider)
                     {
-                        PTLocalInput_new localInput = follower.collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = follower.collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnFollow != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnFollow(touch);
@@ -892,7 +892,7 @@ namespace PlayTable
             };
 
             //OnDragBegin, OnDragMoveBegin
-            PTGlobalInput_new.OnDragBegin += (PTTouch touch) =>
+            PTGlobalInput.OnDragBegin += (PTTouch touch) =>
             {
                 //Add Draggables
                 List<Collider> collidersToDrag = new List<Collider>();
@@ -911,7 +911,7 @@ namespace PlayTable
                     }
                     else
                     {
-                        PTGamePiece_new gamePiece = collider.GetComponent<PTGamePiece_new>();
+                        PTGamePiece gamePiece = collider.GetComponent<PTGamePiece>();
                         bool canAddToDraggables = gamePiece && gamePiece.IsDraggable && isLocalInputInteractiveToTouch(gamePiece, touch);
 
                         if (canAddToDraggables)
@@ -932,7 +932,7 @@ namespace PlayTable
                 {
                     if (hitBeginCollider)
                     {
-                        PTLocalInput_new localInput = hitBeginCollider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = hitBeginCollider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnDragBegin != null && touch.FindFollowerBy(localInput.GetComponent<Collider>()) != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnDragBegin(touch);
@@ -945,7 +945,7 @@ namespace PlayTable
                 {
                     if (draggable != null && draggable.collider)
                     {
-                        PTLocalInput_new localInput = draggable.collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = draggable.collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnDragMoveBegin != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnDragMoveBegin(touch);
@@ -955,13 +955,13 @@ namespace PlayTable
             };
 
             //localInput.OnClicked
-            PTGlobalInput_new.OnClicked += (PTTouch touch) =>
+            PTGlobalInput.OnClicked += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnClicked != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnClicked(touch);
@@ -971,13 +971,13 @@ namespace PlayTable
             };
 
             //localInput.OnFlicked
-            PTGlobalInput_new.OnFlicked += (PTTouch touch) =>
+            PTGlobalInput.OnFlicked += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hitsBegin.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnFlicked != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnFlicked(touch);
@@ -987,13 +987,13 @@ namespace PlayTable
             };
 
             //localInput.OnDoubleClicked
-            PTGlobalInput_new.OnDoubleClicked += (PTTouch touch) =>
+            PTGlobalInput.OnDoubleClicked += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnDoubleClicked != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnDoubleClicked(touch);
@@ -1003,13 +1003,13 @@ namespace PlayTable
             };
 
             //localInput.OnTripleClicked
-            PTGlobalInput_new.OnTripleClicked += (PTTouch touch) =>
+            PTGlobalInput.OnTripleClicked += (PTTouch touch) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnTripleClicked != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnTripleClicked(touch);
@@ -1019,7 +1019,7 @@ namespace PlayTable
             };
 
             //localInput.OnDropped
-            PTGlobalInput_new.OnReleased += (PTTouch touch, PTTouchFollower draggable) =>
+            PTGlobalInput.OnReleased += (PTTouch touch, PTTouchFollower draggable) =>
             {
                 if (draggable != null && draggable.collider)
                 {
@@ -1031,13 +1031,13 @@ namespace PlayTable
             };
 
             //localInput.OnExclusiveClicked
-            PTGlobalInput_new.OnExclusiveClicked += (PTTouch touch, int count) =>
+            PTGlobalInput.OnExclusiveClicked += (PTTouch touch, int count) =>
             {
                 foreach (Collider collider in touch.hits.Keys)
                 {
                     if (collider)
                     {
-                        PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                        PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                         if (localInput && localInput.OnExclusiveClicked != null && isLocalInputInteractiveToTouch(localInput, touch))
                         {
                             localInput.OnExclusiveClicked(touch, count);
@@ -1047,11 +1047,11 @@ namespace PlayTable
             };
 
             //localInput.OnExclusiveClicked
-            PTGlobalInput_new.OnMultiTouch += (Collider collider, PTTouch[] touches) =>
+            PTGlobalInput.OnMultiTouch += (Collider collider, PTTouch[] touches) =>
             {
                 if (collider)
                 {
-                    PTLocalInput_new localInput = collider.GetComponent<PTLocalInput_new>();
+                    PTLocalInput localInput = collider.GetComponent<PTLocalInput>();
                     if (localInput && localInput.OnMultiTouch != null)
                     {
                         localInput.OnMultiTouch(touches);
@@ -1060,7 +1060,7 @@ namespace PlayTable
             };
         }
 
-        private bool isLocalInputInteractiveToTouch(PTLocalInput_new localInput, PTTouch touch)
+        private bool isLocalInputInteractiveToTouch(PTLocalInput localInput, PTTouch touch)
         {
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
             {
@@ -1087,14 +1087,14 @@ namespace PlayTable
                     {
                         touch.phase = PTTouchPhase.StationaryEnter;
                         //touch.timeStationaryBegan = DateTime.Now;
-                        if (PTGlobalInput_new.OnHoldBegin != null)
+                        if (PTGlobalInput.OnHoldBegin != null)
                         {
-                            PTGlobalInput_new.OnHoldBegin(touch);
+                            PTGlobalInput.OnHoldBegin(touch);
                         }
                     }
-                    if (PTGlobalInput_new.OnHold != null)
+                    if (PTGlobalInput.OnHold != null)
                     {
-                        PTGlobalInput_new.OnHold(touch);
+                        PTGlobalInput.OnHold(touch);
                     }
                 }
 
@@ -1107,16 +1107,16 @@ namespace PlayTable
                         //Begans
                         if (touch.phase != PTTouchPhase.Moving)
                         {
-                            if (PTGlobalInput_new.OnTouchMoveBegin != null)
+                            if (PTGlobalInput.OnTouchMoveBegin != null)
                             {
-                                PTGlobalInput_new.OnTouchMoveBegin(touch);
+                                PTGlobalInput.OnTouchMoveBegin(touch);
                             }
                             if (!touch.isDragging)
                             {
                                 touch.isDragging = true;
-                                if (PTGlobalInput_new.OnDragBegin != null)
+                                if (PTGlobalInput.OnDragBegin != null)
                                 {
-                                    PTGlobalInput_new.OnDragBegin(touch);
+                                    PTGlobalInput.OnDragBegin(touch);
                                 }
                             }
                         }
@@ -1130,17 +1130,17 @@ namespace PlayTable
                     }
 
                     //OnMoving
-                    if (PTGlobalInput_new.OnTouchMove != null)
+                    if (PTGlobalInput.OnTouchMove != null)
                     {
-                        PTGlobalInput_new.OnTouchMove(touch);
+                        PTGlobalInput.OnTouchMove(touch);
                     }
 
                     //OnDrag
                     if (touch.isDragging)
                     {
-                        if (PTGlobalInput_new.OnDrag != null)
+                        if (PTGlobalInput.OnDrag != null)
                         {
-                            PTGlobalInput_new.OnDrag(touch);
+                            PTGlobalInput.OnDrag(touch);
                         }
                     }
                 }
@@ -1153,7 +1153,7 @@ namespace PlayTable
         private void HandleDraggables()
         {
             //Scale
-            PTGlobalInput_new.OnDragBegin += (PTTouch touch) =>
+            PTGlobalInput.OnDragBegin += (PTTouch touch) =>
             {
                 foreach (PTTouchFollower draggable in touch.followers)
                 {
@@ -1165,7 +1165,7 @@ namespace PlayTable
                 }
             };
             //Position
-            PTGlobalInput_new.OnDrag += (PTTouch touch) =>
+            PTGlobalInput.OnDrag += (PTTouch touch) =>
             {
                 foreach (PTTouchFollower draggable in touch.followers)
                 {
@@ -1173,7 +1173,7 @@ namespace PlayTable
                 }
             };
             //Reset position and scale
-            PTGlobalInput_new.OnReleased += (PTTouch touch, PTTouchFollower draggable) =>
+            PTGlobalInput.OnReleased += (PTTouch touch, PTTouchFollower draggable) =>
             {
                 draggable.StartDropAnimationBy(this);
             };
@@ -1228,14 +1228,14 @@ namespace PlayTable
                 return ret;
             }
         }
-        public List<PTZone_new> hitZones
+        public List<PTZone> hitZones
         {
             get
             {
-                List<PTZone_new> ret = new List<PTZone_new>();
+                List<PTZone> ret = new List<PTZone>();
                 foreach (Collider hit in hits.Keys)
                 {
-                    PTZone_new hitZone = hit.GetComponent<PTZone_new>();
+                    PTZone hitZone = hit.GetComponent<PTZone>();
                     if (hitZone)
                     {
                         ret.Add(hitZone);
@@ -1264,7 +1264,7 @@ namespace PlayTable
         public Vector3 dragWorldScaleOffset { get { return ptLocalInput ? ptLocalInput.dragWorldScaleOffset : Vector3.zero; } }
         public Transform transform { get { return collider ? collider.transform : null; } }
         public PTTransform ptTransform { get { return collider ? collider.GetComponent<PTTransform>() : null; } }
-        public PTLocalInput_new ptLocalInput { get { return collider ? collider.GetComponent<PTLocalInput_new>() : null; } }
+        public PTLocalInput ptLocalInput { get { return collider ? collider.GetComponent<PTLocalInput>() : null; } }
 
         private const bool DEFAULT_ENABLE_DROP_ANIMATION = false;
 
@@ -1277,7 +1277,7 @@ namespace PlayTable
                     this.touch = touch;
                     this.collider = collider;
                     enterPosition = collider.transform.position;
-                    PTGamePiece_new myGamePiece = transform.GetComponent<PTGamePiece_new>();
+                    PTGamePiece myGamePiece = transform.GetComponent<PTGamePiece>();
                     if (myGamePiece != null)
                     {
                         if (myGamePiece.isCenteredOnDrag)
@@ -1321,7 +1321,7 @@ namespace PlayTable
                     this.touch = touch;
                     this.collider = collider;
                     enterPosition = collider.transform.position;
-                    PTGamePiece_new myGamePiece = transform.GetComponent<PTGamePiece_new>();
+                    PTGamePiece myGamePiece = transform.GetComponent<PTGamePiece>();
                     if (myGamePiece != null)
                     {
                         if (myGamePiece.isCenteredOnDrag)
@@ -1701,7 +1701,7 @@ namespace PlayTable
             catch { }
 
         }
-        public void AddFollower(PTLocalInput_new localInput)
+        public void AddFollower(PTLocalInput localInput)
         {
             AddFollower(localInput.GetComponent<Collider>(), localInput.dragWorldPositionOffset);
         }
@@ -1728,9 +1728,9 @@ namespace PlayTable
             {
                 followers.Remove(draggable);
 
-                if (PTGlobalInput_new.OnReleased != null)
+                if (PTGlobalInput.OnReleased != null)
                 {
-                    PTGlobalInput_new.OnReleased(this, draggable);
+                    PTGlobalInput.OnReleased(this, draggable);
                 }
             }
         }
@@ -1768,17 +1768,17 @@ namespace PlayTable
                 //OnDoubleClicked
                 if (amount >= 2 && amount % 2 == 0)
                 {
-                    if (PTGlobalInput_new.OnDoubleClicked != null)
+                    if (PTGlobalInput.OnDoubleClicked != null)
                     {
-                        PTGlobalInput_new.OnDoubleClicked(touch);
+                        PTGlobalInput.OnDoubleClicked(touch);
                     }
                 }
                 //OnTripleClicked
                 if (amount >= 3 && amount % 3 == 0)
                 {
-                    if (PTGlobalInput_new.OnTripleClicked != null)
+                    if (PTGlobalInput.OnTripleClicked != null)
                     {
-                        PTGlobalInput_new.OnTripleClicked(touch);
+                        PTGlobalInput.OnTripleClicked(touch);
                     }
                 }
                 return true;
@@ -1791,14 +1791,14 @@ namespace PlayTable
         internal void InvokeExclusiveClickEvent()
         {
             //Global
-            if (PTGlobalInput_new.OnExclusiveClicked != null)
+            if (PTGlobalInput.OnExclusiveClicked != null)
             {
-                PTGlobalInput_new.OnExclusiveClicked(initTouch, amount);
+                PTGlobalInput.OnExclusiveClicked(initTouch, amount);
             }
         }
     }
 
-    public static class PTGlobalInput_new
+    public static class PTGlobalInput
     {
         //Global
         #region delegates

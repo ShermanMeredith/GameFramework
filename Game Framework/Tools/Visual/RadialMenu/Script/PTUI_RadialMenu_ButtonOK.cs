@@ -14,28 +14,28 @@ public class PTUI_RadialMenu_ButtonOK : MonoBehaviour {
     {
         initLocalScale = transform.localScale;
         myCollider = GetComponent<Collider>();
-        PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+        PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
         {
             if (myCollider && touch.hits.ContainsKey(myCollider))
             {
                 SetHighlight(HighlightStatus.UnHighlight);
             }
         };
-        PTGlobalInput_new.OnTouchInside += (PTTouch touch, Collider collider) =>
+        PTGlobalInput.OnTouchInside += (PTTouch touch, Collider collider) =>
         {
             if (collider == myCollider)
             {
                 SetHighlight(HighlightStatus.Highlight);
             }
         };
-        PTGlobalInput_new.OnTouchExit += (PTTouch touch, Collider collider) =>
+        PTGlobalInput.OnTouchExit += (PTTouch touch, Collider collider) =>
         {
             if (collider == myCollider)
             {
                 SetHighlight(HighlightStatus.UnHighlight);
             }
         };
-        PTGlobalInput_new.OnTouchEnter += (PTTouch touch, Collider collider) =>
+        PTGlobalInput.OnTouchEnter += (PTTouch touch, Collider collider) =>
         {
             if (collider == myCollider)
             {

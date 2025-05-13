@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PlayTable
 {
-    public class PTDeck_new : PTLayoutZone_new
+    public class PTDeck : PTLayoutZone
     {
         [SerializeField]
         private bool firstCardFaceUp, autoRefill, playerInteractive, topCardDraggable;
@@ -15,7 +15,7 @@ namespace PlayTable
         private float dealSpeed = 0.2f;
 
         [SerializeField]
-        private PTLayoutZone_new discardZone;
+        private PTLayoutZone discardZone;
 
         #region properties
         private Transform topCard { get { return Get(0); } }
@@ -33,7 +33,7 @@ namespace PlayTable
                         {
                             SetContentsInteractive(false);
                             Get(0).GetComponent<Collider>().enabled = topCardDraggable;
-                            topCard.GetComponent<PTGamePiece_new>().IsDraggable = topCardDraggable;
+                            topCard.GetComponent<PTGamePiece>().IsDraggable = topCardDraggable;
                         }
                     }
                 };
@@ -49,7 +49,7 @@ namespace PlayTable
                 topCardDraggable = draggable;
                 SetContentsInteractive(false);
                 Get(0).GetComponent<Collider>().enabled = topCardDraggable;
-                topCard.GetComponent<PTGamePiece_new>().IsDraggable = topCardDraggable;
+                topCard.GetComponent<PTGamePiece>().IsDraggable = topCardDraggable;
             }
         }
 
@@ -79,12 +79,12 @@ namespace PlayTable
                     {
                         yield return RefillDeck();
                     }
-                    PTZone_new currZone = player.GetComponentInChildren<PTZone_new>();
+                    PTZone currZone = player.GetComponentInChildren<PTZone>();
                     yield return DealOneCard(currZone, false);
                 }
             }
         }
-        public virtual IEnumerator DealOneCard(PTZone_new zone, bool faceup)
+        public virtual IEnumerator DealOneCard(PTZone zone, bool faceup)
         {
             if(content.childCount > 0)
             {

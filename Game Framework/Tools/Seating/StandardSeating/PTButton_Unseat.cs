@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PTButton_Unseat : PTGameButton_new
+public class PTButton_Unseat : PTGameButton
 {
     protected override IEnumerator OnTouchBeginCoroutine()
     {

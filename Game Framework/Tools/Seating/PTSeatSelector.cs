@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class PTSeatSelector : MonoBehaviour {
 
-    public PTGamePiece_new buttonRemove;
+    public PTGamePiece buttonRemove;
 
-    private PTGamePiece_new localInput;
+    private PTGamePiece localInput;
     private bool isBeingDragged;
     private int lastSiblingIndex;
     private PTSeat lastSeat;
     public PTSeat seat { get { return GetComponentInParent<PTSeat>(); } }
-    public PTLayoutZone_new playerPoolZone {  get { return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone_new>(); } }
+    public PTLayoutZone playerPoolZone {  get { return FindObjectOfType<PTPlayerPool>().GetComponent<PTLayoutZone>(); } }
 
     private void Awake()
     {
-        localInput = GetComponent<PTGamePiece_new>();
+        localInput = GetComponent<PTGamePiece>();
 
         localInput.OnDragBegin += HandlerOnDragBegin;
         localInput.OnDropped += HandlerOnDropped;

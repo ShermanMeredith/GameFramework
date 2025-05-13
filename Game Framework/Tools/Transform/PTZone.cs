@@ -8,7 +8,7 @@ namespace PlayTable
     /// <summary>
     /// The place to organize multiple transforms
     /// </summary>
-    public abstract class PTZone_new : MonoBehaviour
+    public abstract class PTZone : MonoBehaviour
     {
         #region fields
         [SerializeField, TagSelector]
@@ -175,7 +175,7 @@ namespace PlayTable
         {
             for (int i = 0; i < Count; ++i)
             {
-                Get(i).GetComponent<PTGamePiece_new>().IsDraggable = enabled;
+                Get(i).GetComponent<PTGamePiece>().IsDraggable = enabled;
             }
         }
 

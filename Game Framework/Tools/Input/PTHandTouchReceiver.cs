@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayTable;
 
-[RequireComponent(typeof(PTLayoutZone_new))]
-public class PTHandTouchReceiver_new : PTLocalInput_new
+[RequireComponent(typeof(PTLayoutZone))]
+public class PTHandTouchReceiver : PTLocalInput
 {
     private class DragInfo
     {
@@ -48,7 +48,7 @@ public class PTHandTouchReceiver_new : PTLocalInput_new
 
     // Private fields
     private Dictionary<PTTouch, DragInfo> touchDragInfo = new Dictionary<PTTouch, DragInfo>();
-    protected PTLayoutZone_new myZone;
+    protected PTLayoutZone myZone;
     private int draggingSortingOrder = 5;
 
     // public fields
@@ -101,7 +101,7 @@ public class PTHandTouchReceiver_new : PTLocalInput_new
     protected override void Awake()
     {
         base.Awake();
-        myZone = GetComponent<PTLayoutZone_new>();
+        myZone = GetComponent<PTLayoutZone>();
         myZone.OnRemoved += (obj) => myZone.Arrange();
         OnDrag += DragHandler;
         OnDragBegin += DragBeginHandler;
@@ -157,10 +157,10 @@ public class PTHandTouchReceiver_new : PTLocalInput_new
                     {
                         touchDragInfo[touch].SetDragState(DragState.Dragging);
                         touchDragInfo[touch].draggedChild.GetComponent<UnityEngine.Rendering.SortingGroup>().sortingOrder = draggingSortingOrder;
-                        if (touchDragInfo[touch].draggedChild.GetComponent<PTLocalInput_new>())
+                        if (touchDragInfo[touch].draggedChild.GetComponent<PTLocalInput>())
                         {
-                            touch.AddFollower(touchDragInfo[touch].draggedChild.GetComponent<PTLocalInput_new>());
-                            touchDragInfo[touch].draggedChild.GetComponent<PTLocalInput_new>().OnDragBegin(touch);
+                            touch.AddFollower(touchDragInfo[touch].draggedChild.GetComponent<PTLocalInput>());
+                            touchDragInfo[touch].draggedChild.GetComponent<PTLocalInput>().OnDragBegin(touch);
                         }
                         else
                         {
@@ -238,7 +238,7 @@ public class PTHandTouchReceiver_new : PTLocalInput_new
         {
             foreach (Transform child in myZone.Objects)
             {
-                List<PTTouch> touchesDragging = PTGlobalInput_new.FindTouchesDragging(child.GetComponent<Collider>());
+                List<PTTouch> touchesDragging = PTGlobalInput.FindTouchesDragging(child.GetComponent<Collider>());
                 if(touchesDragging.Count == 0)
                 {
                     /*

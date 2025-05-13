@@ -6,7 +6,7 @@ using PlayTable;
 /// <summary>
 /// PTContainerZone is a zone that only accepts an object if its container is empty
 /// </summary>
-public class PTContainerZone_new : PTZone_new
+public class PTContainerZone : PTZone
 {
     [SerializeField]
     private bool swapEnabled;
@@ -25,7 +25,7 @@ public class PTContainerZone_new : PTZone_new
             {
                 if (Count > 0)
                 {
-                    PTZone_new newZoneForCurrentObject = droppedObj.transform.GetComponentInParent<PTZone_new>();
+                    PTZone newZoneForCurrentObject = droppedObj.transform.GetComponentInParent<PTZone>();
                     if (newZoneForCurrentObject != null)
                     {
                         Transform currentObject = Get(0);
@@ -90,10 +90,10 @@ public class PTContainerZone_new : PTZone_new
 
             if (fromParent != null)
             {
-                PTZone_new zone = fromParent.GetComponentInParent<PTZone_new>();
-                if(zone != null && zone.GetComponent<PTContainerZone_new>() != this && zone.OnRemoved != null)
+                PTZone zone = fromParent.GetComponentInParent<PTZone>();
+                if(zone != null && zone.GetComponent<PTContainerZone>() != this && zone.OnRemoved != null)
                 {
-                    fromParent.GetComponentInParent<PTZone_new>().OnRemoved(component.transform);
+                    fromParent.GetComponentInParent<PTZone>().OnRemoved(component.transform);
                 }
             }
 

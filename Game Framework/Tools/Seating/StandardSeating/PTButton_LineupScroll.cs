@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayTable;
 
-public class PTButton_LineupScroll : PTGameButton_new
+public class PTButton_LineupScroll : PTGameButton
 {
     private bool isScrollRightButton = true;
     [SerializeField] private Transform knob;

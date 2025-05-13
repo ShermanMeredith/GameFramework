@@ -6,7 +6,7 @@ using PlayTable;
 /// <summary>
 /// PTLayoutZone is a zone where added objects are laid out into a special formation based on this script's parameters
 /// </summary>
-public class PTLayoutZone_new : PTZone_new
+public class PTLayoutZone : PTZone
 {
     /// <summary>
     /// Used for arranging children
@@ -383,14 +383,14 @@ public class PTLayoutZone_new : PTZone_new
             }
             component.transform.SetParent(content, siblingIndex);
 
-            if (fromParent != null && fromParent.GetComponentInParent<PTZone_new>() != null && fromParent.GetComponentInParent<PTZone_new>().transform != transform && fromParent.GetComponentInParent<PTZone_new>().OnRemoved != null)
+            if (fromParent != null && fromParent.GetComponentInParent<PTZone>() != null && fromParent.GetComponentInParent<PTZone>().transform != transform && fromParent.GetComponentInParent<PTZone>().OnRemoved != null)
             {
-                fromParent.GetComponentInParent<PTZone_new>().OnRemoved(component.transform);
+                fromParent.GetComponentInParent<PTZone>().OnRemoved(component.transform);
             }
 
-            if (GetComponent<PTHandTouchReceiver_new>() != null && GetComponent<PTHandTouchReceiver_new>().isActiveAndEnabled)
+            if (GetComponent<PTHandTouchReceiver>() != null && GetComponent<PTHandTouchReceiver>().isActiveAndEnabled)
             {
-                GetComponent<PTHandTouchReceiver_new>().SendToFanPosition(component.transform);
+                GetComponent<PTHandTouchReceiver>().SendToFanPosition(component.transform);
             }
             else
             {

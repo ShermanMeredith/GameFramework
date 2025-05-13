@@ -11,7 +11,7 @@ public class PTSeatingSeat : MonoBehaviour
     public enum Difficulty { None, Rookie, Veteran, Master };
 
     [Header("Game-Specific Settings")]
-    [SerializeField] private PTZone_new playerMatPortraitZone;
+    [SerializeField] private PTZone playerMatPortraitZone;
     [SerializeField] private GameObject destinationPlayerMat;
 
     [Header("Seat Options")]
@@ -29,7 +29,7 @@ public class PTSeatingSeat : MonoBehaviour
 
     private bool isBooping = false;
 
-    public PTContainerZone_new Zone { get; private set; }
+    public PTContainerZone Zone { get; private set; }
     public Difficulty AiDifficulty { get { return (Difficulty)aiDifficultyOptions.Choice + 1; } }
     public Sprite AiDifficultySprite { get { return aiDifficultyOptions.chosenOptionIndicator.sprite; } }
     public bool IsSeatingOptionsChosen { get; private set; }
@@ -37,7 +37,7 @@ public class PTSeatingSeat : MonoBehaviour
 
     private void Awake()
     {
-        Zone = GetComponent<PTContainerZone_new>();
+        Zone = GetComponent<PTContainerZone>();
         Zone.OnAdded += OnAddedHandler;
         Zone.OnSwap += OnSwapHandler;
         Zone.OnRemoved += OnRemovedHandler;

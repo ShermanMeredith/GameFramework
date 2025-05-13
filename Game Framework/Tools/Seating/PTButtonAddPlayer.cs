@@ -4,19 +4,19 @@ using UnityEngine;
 using PlayTable;
 
 public class PTButtonAddPlayer : MonoBehaviour {
-    public PTLayoutZone_new spawn;
+    public PTLayoutZone spawn;
     public PTPlayer playerPrefab;
 
     public int Count { get; private set; }
 
-    private PTLocalInput_new localInput;
+    private PTLocalInput localInput;
     private GameObject addPlayerTextObject;
 
 
     private void Awake()
     {
         addPlayerTextObject = GetComponentInChildren<TMPro.TMP_Text>().gameObject;
-        localInput = GetComponent<PTLocalInput_new>();
+        localInput = GetComponent<PTLocalInput>();
         Count = 0;
 
         localInput.OnTouchBegin += (PTTouch touch) =>

@@ -20,12 +20,12 @@ public class PTSmartDiceListener : MonoBehaviour
     {
         PTSmartPieceManager.Instance.OnSpScanned += SpDownHandler;
         PTSmartPieceManager.Instance.OnSpUp += SpUpHandler;
-        PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+        PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
         {
             invalidTouches.Remove(touch);
             stationaryTouches.Remove(touch);
         };
-        PTGlobalInput_new.OnShortHoldBegin += (PTTouch touch) =>
+        PTGlobalInput.OnShortHoldBegin += (PTTouch touch) =>
         {
             foreach (ScannedSmartPiece sp in verifiedRolls)
             {
@@ -41,7 +41,7 @@ public class PTSmartDiceListener : MonoBehaviour
             }
             stationaryTouches.Add(touch);
         };
-        PTGlobalInput_new.OnTouchMoveBegin += (PTTouch touch) =>
+        PTGlobalInput.OnTouchMoveBegin += (PTTouch touch) =>
         {
             foreach (ScannedSmartPiece sp in verifiedAndStationaryRolls)
             {
@@ -182,7 +182,7 @@ public class PTSmartDiceListener : MonoBehaviour
                 {
                     for (int antenna = 0; antenna < 12; ++antenna)
                     {
-                        string uid = PTService_new.Instance.Scan(((Bank)bank).ToString(), antenna);
+                        string uid = PTService.Instance.Scan(((Bank)bank).ToString(), antenna);
                         if(uid != null && uid != "null")
                         {
                             PTSmartPieceManager.Instance.AddScannedSmartPiece(new ScanOrigin((PTTouch)null), uid);

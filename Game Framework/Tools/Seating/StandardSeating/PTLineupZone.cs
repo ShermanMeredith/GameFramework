@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayTable;
 
-public class PTLineupZone : PTLayoutZone_new
+public class PTLineupZone : PTLayoutZone
 {
     // Start is called before the first frame update
     void Start()

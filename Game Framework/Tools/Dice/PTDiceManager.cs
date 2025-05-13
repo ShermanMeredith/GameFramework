@@ -4,10 +4,10 @@ using System.Reflection;
 using UnityEngine;
 using PlayTable;
 
-public class PTDiceManager_new : MonoBehaviour
+public class PTDiceManager : MonoBehaviour
 {
     // fields
-    public static PTDiceManager_new Instance { get; private set; }
+    public static PTDiceManager Instance { get; private set; }
     const float VELOCITY_THRESHOLD = 3.3f;
     const float OFFSET = 1f;
     [SerializeField]
@@ -266,15 +266,15 @@ public class PTDiceManager_new : MonoBehaviour
             DiceDraggables[i] = Instantiate(draggablePrefab, transform);
             GameObject diceDraggable = DiceDraggables[i];
 
-            diceDraggable.GetComponent<PTGamePiece_new>().OnDragBegin += (PTTouch touch) => 
+            diceDraggable.GetComponent<PTGamePiece>().OnDragBegin += (PTTouch touch) => 
             {
                 if (!IsDragging)
                 {
                     DiceDraggedHandler(diceDraggable.transform);
                 }
             };
-            diceDraggable.GetComponent<PTGamePiece_new>().OnDropped += (PTTouchFollower follower) => { StartCoroutine(DiceDroppedHandler(follower)); };
-            diceDraggable.GetComponent<PTGamePiece_new>().SetPositionOffset(dragHeight);
+            diceDraggable.GetComponent<PTGamePiece>().OnDropped += (PTTouchFollower follower) => { StartCoroutine(DiceDroppedHandler(follower)); };
+            diceDraggable.GetComponent<PTGamePiece>().SetPositionOffset(dragHeight);
 
             SpringJoint springJoint = DiceDraggables[i].GetComponent<SpringJoint>();
             for (int j = 0; j < numberOfDice - 1; ++j)

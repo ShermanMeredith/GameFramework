@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PlayTable
 {
-    [RequireComponent(typeof(PTLayoutZone_new))]
+    [RequireComponent(typeof(PTLayoutZone))]
     public class PTFlatGroups : MonoBehaviour
     {
         public bool allowRapidDrag = false;
@@ -34,7 +34,7 @@ namespace PlayTable
             }
         }
 
-        private PTLayoutZone_new ptZone = null;
+        private PTLayoutZone ptZone = null;
         public bool hasCooledDown { get; private set; }
         private Coroutine coroutineUpdateContent = null;
 
@@ -47,10 +47,10 @@ namespace PlayTable
         private void Awake()
         {
             Collections = new List<PTFlatGroupCollection>();
-            ptZone = GetComponent<PTLayoutZone_new>();
+            ptZone = GetComponent<PTLayoutZone>();
             hasCooledDown = true;
 
-            PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+            PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
             {
                 UpdateContent();
             };

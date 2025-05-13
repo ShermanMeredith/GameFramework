@@ -77,7 +77,7 @@ public class PTUI_RadialMenu : MonoBehaviour {
 
         //ButtonOK
         Collider colliderButtonOK = buttonOK.GetComponent<Collider>();
-        PTGlobalInput_new.OnTouchEnd += (PTTouch touch) =>
+        PTGlobalInput.OnTouchEnd += (PTTouch touch) =>
         {
             if (colliderButtonOK && touch.hits.ContainsKey(colliderButtonOK))
             {
@@ -90,14 +90,14 @@ public class PTUI_RadialMenu : MonoBehaviour {
                 StartCoroutine(sections.Toggle(false));
             }
         };
-        PTGlobalInput_new.OnTouchInside += (PTTouch touch, Collider collider) =>
+        PTGlobalInput.OnTouchInside += (PTTouch touch, Collider collider) =>
         {
             if (collider == colliderButtonOK)
             {
                 isOnButtonOK = true;
             }
         };
-        PTGlobalInput_new.OnTouchExit += (PTTouch touch, Collider collider) =>
+        PTGlobalInput.OnTouchExit += (PTTouch touch, Collider collider) =>
         {
             if (collider == colliderButtonOK)
             {

@@ -19,8 +19,8 @@ namespace PlayTable
     public delegate void PTDelegateTouchCollider(PTTouch touch, Collider collider);
     public delegate void PTDelegateTouchDraggable(PTTouch touch, PTTouchFollower draggable);
     public delegate void PTDelegateTransform(Transform obj);
-    public delegate void PTDelegateListZone(List<PTZone_new> zonesHit, List<PTZone_new> zonesAccepted);
-    public delegate void PTDelegateZone(PTZone_new zone);
+    public delegate void PTDelegateListZone(List<PTZone> zonesHit, List<PTZone> zonesAccepted);
+    public delegate void PTDelegateZone(PTZone zone);
     public delegate void PTDelegateFollower(PTTouchFollower follower);
     public delegate void PTDelegateTransformFromTransform(Transform trans, Transform from);
     #endregion
@@ -601,10 +601,10 @@ namespace PlayTable
             //trans.gameObject.SetActive(b);
             //trans.StartCoroutineSelf(trans.ToggleVisibilityCoroutine(b, timer));
         }
-        public static bool IsInZone(this Transform trans) { return trans.GetComponentInParent<PTZone_new>(); }
-        public static bool IsInZone(this Transform trans, PTZone_new zone)
+        public static bool IsInZone(this Transform trans) { return trans.GetComponentInParent<PTZone>(); }
+        public static bool IsInZone(this Transform trans, PTZone zone)
         {
-            PTZone_new parentZone = trans.GetComponentInParent<PTZone_new>();
+            PTZone parentZone = trans.GetComponentInParent<PTZone>();
             return parentZone && parentZone == zone;
         }
         /// <summary>
@@ -675,7 +675,7 @@ namespace PlayTable
         #region UnityEngine.Collider
         public static bool IsBeingDragged(this Collider collider)
         {
-            return PTGlobalInput_new.IsDragging(collider);
+            return PTGlobalInput.IsDragging(collider);
         }
         #endregion
 
